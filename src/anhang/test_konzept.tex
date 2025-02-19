@@ -1,0 +1,53 @@
+\subsection{Testkonzept}
+
+% Detaillierte Beschreibung des Testkonzepts (falls nicht vollständig im Hauptteil)
+% Beschreibung der verwendeten Testmethoden
+% Falls vorhanden: Teststrategie-Dokument oder Referenzen zu Teststandards (z. B. ISTQB)
+
+\subsection{Beamer}
+
+\LaTeX~bietet nicht nur die Möglichkeit schriftliche Ausarbeitungen in Form von Hausarbeiten zu erstellen, sondern mit Beamer eine Alternative
+zu PowerPoint oder Keynote. Das Layout ist in vielen Fällen schlicht, was nicht negativ gemeint ist und erinnert im Design eher an die 
+frühen 2000er. Durch einige Anpassungen ist es dennoch möglich ein schlichtes, aber funktionales Layout zu entwerfen, welches sich gut für 
+Präsentationen eignet.\\
+Eine solche Vorlage findet sich analog zu den Poster Vorlagen und erfordert wenig Umgewöhnung. Es können Tabellen und Abbildungen, sowie Referenzen 
+wie gewohnt genutzt werden. Lediglich die Listings erfordern eine kleine Umgewöhnung, ebenso wie das Arbeiten mit der \textit{column} Umgebung.
+
+\begin{code}{Beamer Frame}{beamer_frame}
+	\begin{minted}{latex}
+\section{Frame Example with table}
+
+\begin{frame}{Frame Example with table}
+	\begin{columns}
+
+	\begin{column}{0.4\textwidth}
+		This is some text in the second frame~\autocite{donovan2015go}.
+		This is some text in the second~\autocite{kane2018docker}. 
+	\end{column}
+
+	\begin{column}{0.59\textwidth}
+		\scriptsize{
+			\begin{talltblr}[caption={\LaTeX~Sonderzeichen}]{colspec={X[l,m] X[0.5,c,m]}, rowhead=1, width=0.8\textwidth}\toprule
+			Befehl                         & Ergebnis         \\ \midrule
+			\textbackslash\&               & \&               \\ \cmidrule{1-2}
+			\textbackslash\%               & \%               \\ \cmidrule{1-2}
+			\textbackslash\$               & \$               \\ \cmidrule{1-2}
+			\textbackslash\#               & \#               \\ \cmidrule{1-2}
+			\textbackslash\{               & \{               \\ \cmidrule{1-2}
+			\textbackslash\}               & \}               \\ \cmidrule{1-2}
+			\end{talltblr}}
+	\end{column}
+
+	\end{columns} 
+\end{frame}                       
+	\end{minted}
+\end{code}
+
+Wie zu sehen, wird in Beamer ebenfalls mit \texttt{sections} gearbeitet. Um einen neuen Slide zu erstellen wird 
+\texttt{\textbackslash begin\{frame\}} genutzt. Die \texttt{columns} Umgebung ermöglicht das Unterteilen des Frames 
+in mehrere Spalten, welche daraufhin als einzelne \texttt{column} definiert werden. Dabei kann die Textbreite angegeben werden.\\
+Listings müssen über eine besondere Umgebung definiert und eingebunden werden, da Beamer ansonsten nicht mit \texttt{minted} umgehen kann. 
+
+\begin{code}{Beamer Frame mit Listing}{beamer_frame_listing}
+		\inputminted{latex}{src/beamerlisting.txt}
+\end{code}

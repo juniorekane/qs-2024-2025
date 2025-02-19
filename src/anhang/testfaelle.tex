@@ -1,0 +1,72 @@
+\subsection{Testfälle}
+
+% Liste aller Testfälle in tabellarischer Form (Testfall-ID, Beschreibung, erwartetes Ergebnis, Testergebnis)
+% Falls automatisierte Tests verwendet wurden:
+% Beispieldateien für Skripte (z. B. JUnit-Tests, Selenium-Tests)
+% Logs oder Screenshots von Testläufen
+
+Wie im Listing gezeigt, wird das Listing außerhalb des Frames definiert und
+in Zeile 27 eingefügt. \texttt{CodeOne} ist dabei der zugewiesene Name unter dem
+das Listing eingefügt werden kann. Die Definition erfolgt in Zeile 1, der Name ist frei wählbar. 
+Das Listing so einzubinden ist nicht optimal, jedoch bleibt aktuell keine andere Möglichkeit, wenn mit \texttt{minted} gearbeitet wird.\\
+Das Inhaltsverzeichnis und die Referenzen werden automatisch erstellt, alle Einstellungen können natürlich 
+innerhalb der Vorlage angepasst werden.\\
+Obiges Listing würde mit der Vorlage folgendermaßen aussehen. Wie immer finden sich alle 
+Beispiele auch in den jeweiligen Vorlagen.
+
+\FloatBarrier
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{src/abbildungen/beamer_frame.png}
+	\caption{Frame mit Listing}
+\end{figure}
+\FloatBarrier
+
+
+\newpage
+
+\subsection{Quickbuild}
+
+Wird ein Projekt mit der Zeit relativ groß, verfügt also über eine Vielzahl von
+Listings, Tabellen, Abbildungen und Text, dann wird für das Kompilieren eine nicht
+unerhebliche Zeit benötigt. Um das ganze Dokument, inkl. aller Referenzen und
+Abkürzungen etc. zu bauen, ist dies auch nötig und lässt sich nicht vermeiden.
+Oft benötigt man jedoch nur einen kurzen Blick auf Layout oder den Umfang des bisher
+geschriebenen und möchte nicht das Dokument in seiner Gesamtheit kompilieren.\\
+Für diese Anforderungen gibt es sog. \texttt{subfiles}, diese ermöglichen es, nur
+einen kleinen Teil des Dokumentes zu kompilieren und als PDF zu betrachten. Dabei
+kommt es zu gewissen Einschränkungen, so werden Seitenzahlen, Referenzen und Abkürzungen
+nicht korrekt dargestellt, dennoch erhält man einen guten Blick auf das Layout.
+Um mit \texttt{subfiles} zu arbeiten, muss einiges beachtet werden.
+So muss statt des \texttt{\textbackslash input\{\}} das Kommando \texttt{\textbackslash subfile\{\}}
+genutzt werden. Darüber hinaus müssen alle \texttt{.tex}-Dateien mit einer eigenen \texttt{documentclass}
+ausgestattet werden. In der \texttt{hauptdatei.tex} sieht dies dann folgendermaßen aus.
+
+\begin{code}{Einbinden von subfiles}{einbinden_subfiles}
+\begin{minted}{latex}
+	\subfile{src/einleitung.tex}
+	\subfile{src/struktur.tex}
+	\subfile{src/zurhauptdatei.tex}
+\end{minted}
+\end{code}
+
+Jedes Subfile muss dann mit der passenden \texttt{documentclass} beginnen. 
+
+\begin{code}{Erstellen von subfiles}{erstellen_subfiles}
+\begin{minted}{latex}
+	\documentclass[../hauptdatei.tex]{subfiles}
+	\begin{document}
+	\section{Beispiel}
+
+	Hier könnte sinnvoller Inhalt stehen. 
+
+	\end{document}
+\end{minted}
+\end{code}
+
+Durch die eigene \texttt{documentclass}, welche wiederum auf die \texttt{hauptdatei.tex} verweist und 
+die Angabe von \texttt{\textbackslash begin} bzw. \texttt{\textbackslash end\{document\}} kann die entsprechende 
+\texttt{tex}-Datei separat kompiliert werden. Dafür kann das Skript \texttt{quickbild.sh} genutzt werden, welches 
+als Argument den Namen der zu kompilierenden Datei erwartet und ein PDF erzeugt.\\
+Abbildungen, Listings, Tabellen können wie gewohnt genutzt werden. Wird \texttt{buildlualatex.sh} ausgeführt, 
+baut nach wie vor das gesamte Dokument inkl. aller Subfiles und Referenzen. 
