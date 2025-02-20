@@ -1,53 +1,74 @@
+\newpage
 \subsection{Testkonzept}
 
-% Detaillierte Beschreibung des Testkonzepts (falls nicht vollständig im Hauptteil)
-% Beschreibung der verwendeten Testmethoden
-% Falls vorhanden: Teststrategie-Dokument oder Referenzen zu Teststandards (z. B. ISTQB)
 
-\subsection{Beamer}
+\newcommand{\konzept}[4]{%
+    \subsection*{titel}
+    \vspace{0.3cm}
+}
 
-\LaTeX~bietet nicht nur die Möglichkeit schriftliche Ausarbeitungen in Form von Hausarbeiten zu erstellen, sondern mit Beamer eine Alternative
-zu PowerPoint oder Keynote. Das Layout ist in vielen Fällen schlicht, was nicht negativ gemeint ist und erinnert im Design eher an die 
-frühen 2000er. Durch einige Anpassungen ist es dennoch möglich ein schlichtes, aber funktionales Layout zu entwerfen, welches sich gut für 
-Präsentationen eignet.\\
-Eine solche Vorlage findet sich analog zu den Poster Vorlagen und erfordert wenig Umgewöhnung. Es können Tabellen und Abbildungen, sowie Referenzen 
-wie gewohnt genutzt werden. Lediglich die Listings erfordern eine kleine Umgewöhnung, ebenso wie das Arbeiten mit der \textit{column} Umgebung.
+\subsubsection{Einleitung}
 
-\begin{code}{Beamer Frame}{beamer_frame}
-	\begin{minted}{latex}
-\section{Frame Example with table}
+Durch dieses Testkonzept haben wir versucht die grundlegenden Testverfahren zu beschhreiben, die zur Überprüfung der Krenfunktionalitäten unseres Prototyps verwendet werden.\\
+Da es sich lediglich um eine kleines Projekt handelt, liegt der Fokus bei uns auf die technischen Tests zur Funktionsprüfung, anstatt systemweit deckende Funktionalitäten oder System- oder Usability-Tests.\\
+Unser Ziel ist es, die wichtigsten Funktionen zu validieren, um eine fehlerfreie und konsistendte Prototyp-Umsetzung sicherzustellen.
 
-\begin{frame}{Frame Example with table}
-	\begin{columns}
+\subsubsection{Testziele und Strategie}
 
-	\begin{column}{0.4\textwidth}
-		This is some text in the second frame~\autocite{donovan2015go}.
-		This is some text in the second~\autocite{kane2018docker}. 
-	\end{column}
+\textbf{Testziele}
 
-	\begin{column}{0.59\textwidth}
-		\scriptsize{
-			\begin{talltblr}[caption={\LaTeX~Sonderzeichen}]{colspec={X[l,m] X[0.5,c,m]}, rowhead=1, width=0.8\textwidth}\toprule
-			Befehl                         & Ergebnis         \\ \midrule
-			\textbackslash\&               & \&               \\ \cmidrule{1-2}
-			\textbackslash\%               & \%               \\ \cmidrule{1-2}
-			\textbackslash\$               & \$               \\ \cmidrule{1-2}
-			\textbackslash\#               & \#               \\ \cmidrule{1-2}
-			\textbackslash\{               & \{               \\ \cmidrule{1-2}
-			\textbackslash\}               & \}               \\ \cmidrule{1-2}
-			\end{talltblr}}
-	\end{column}
+\begin{itemize}
+	\item Sicherstellen, dass die Kernfunktionen korrekt arbeiten
+	\item Prüfen, ob Module korrekt interagieren
+	\item Fehlermeldungen und ungültige Eingaben testen
+\end{itemize}
 
-	\end{columns} 
-\end{frame}                       
-	\end{minted}
-\end{code}
+\textbf{Teststrategie}
 
-Wie zu sehen, wird in Beamer ebenfalls mit \texttt{sections} gearbeitet. Um einen neuen Slide zu erstellen wird 
-\texttt{\textbackslash begin\{frame\}} genutzt. Die \texttt{columns} Umgebung ermöglicht das Unterteilen des Frames 
-in mehrere Spalten, welche daraufhin als einzelne \texttt{column} definiert werden. Dabei kann die Textbreite angegeben werden.\\
-Listings müssen über eine besondere Umgebung definiert und eingebunden werden, da Beamer ansonsten nicht mit \texttt{minted} umgehen kann. 
+\begin{itemize}
+	\item Zuerst einzelne Komponenten testen (Unit-Tests)
+	\item Danach prüfen, ob die Module zusammenarbeiten (Integrationstests)
+	\item Überprüfung der Systemfunktionen (Funktionstests)
+	\item Bewusst falsche Eingaben ausprobieren (Negative Tests)
+\end{itemize}
 
-\begin{code}{Beamer Frame mit Listing}{beamer_frame_listing}
-		\inputminted{latex}{src/beamerlisting.txt}
-\end{code}
+\subsubsection{Ausgewählte Testverfahren und Begründung}
+
+\begin{center}
+	\begin{talltblr}[caption={Ausgewählte Testverfahren}, label={Testverfahren}]{width=0.9\textwidth, colspec={X[3,l,m] X[5,c,m]X[5,l,m]}}\toprule
+		\textbf{Testverfahren} & \textbf{Einsatzbereich} & \SetCell[c=1]{c} \textbf{Begründung} \\ \midrule
+		
+		Unit-Tests & Einzelne Funktionen wie Datenvalidierung, ID-Format, Speicherung von Ablesewerten & Frühes Erkennen von Fehlern in einzelnen Modulen \\ \cmidrule{1-3}
+		Integrationstests  & Zusammenspiel der Module, z. B. Verknüpfung von Zähler, Wohnung und Gebäude & Sicherstellen, dass die Module korrekt miteinander arbeiten \\ \cmidrule{1-3}
+		Funktionstests  & Überprüfung der gesamten Funktionalität wie Zählerverwaltung, Ablesungen, Filterung & Verifizierung der implementierten Anforderungen \\ \cmidrule{1-3}
+		Negative Tests  & Eingabe ungültiger Werte (z. B. leere Felder, falsche ID, negatives Datum) & Sicherstellen, dass das System Fehlersituationen richtig behandelt \\ \bottomrule
+
+	\end{talltblr}
+\end{center}
+
+\subsubsection{Testumgebung und Testfälle}
+
+\textbf{Testumgebung}
+\begin{itemize}
+	\item Der Prototyp wird in einer lokalen Entwicklungsumgebung getestet.
+	\item Es wird eine Testdatenbank mit Dummy-Daten erstellt.
+\end{itemize}
+
+\\
+\textbf{Wichtige Testfälle}
+
+\begin{center}
+	\begin{talltblr}[caption={relevante Testfälle}, label={Testfälle}]{colspec={X[5,c,m]X[5,l,m]}, width=0.9\textwidth}\toprule
+		Testfall & Erwartetes Ergebnis \\ \midrule
+		Zähler-ID existiert nicht & Fehlermeldung: „Die eingegebene ID existiert nicht.“ \\ \cmidrule{1-2}
+		Ablesewert ist negativ (-10) & Fehlermeldung: „Ungültiger Ablesewert.“ \\ \cmidrule{1-2}
+		Eingabe eines zu langen Zähler-Codes & Fehlermeldung: „Zähler-ID muss 10 Zeichen haben.“ \\ \cmidrule{1-2}
+		Korrekte ID eingeben & Zähler wird erfolgreich gefunden \\ \cmidrule{1-2}
+		Eingabe einer gültigen Ablesung & Wert wird korrekt gespeichert \\ \bottomrule
+	\end{talltblr}
+\end{center}
+
+\subsubsection{Fazit}
+
+Mit diesem Testkonzept wollen wir sicherstellen, dass die wichtigsten Funktionen des Prototyps getestet werden, ohne unnötig viel Zeit in realistische (wir meinen hier eine produktive Umgebung.)\\
+oder nicht notwendige Tests zu investieren. Die Kombination aus Unit-Tests, Integrationstests, Funktionstests und Negative Tests reicht aus, um die Qualität und Stabilität des Prototyps sicherzustellen.
