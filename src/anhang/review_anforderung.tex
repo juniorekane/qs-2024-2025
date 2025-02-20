@@ -1,4 +1,4 @@
-\subsection{Review der Anforderungen}
+\subsection{Review-Protokoll der Anforderungen an die Hausverwaltung}
 
 Review der Anforderungen
 
@@ -9,9 +9,79 @@ Review der Anforderungen
 % Verbesserungsvorschläge
 % Verantwortliche Personen und Datum des Reviews
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.54\textwidth]{src/anhang/abbildungen/poster.png}
-	\caption{Poster}
-	\label{picturedposter}
-\end{figure}
+\textbf{Methode des Reviews:}
+\begin{itemize}[noitemsep, topsep=0pt, parsep=0pt, partopsep=0pt]
+	\item Es wurde ein \texttt{technisches Review} nach ISO 20246 durchgeführt.
+	\item Die Überprüfung erfolgte anhand folgender Kriterien:
+	\begin{itemize}[noitemsep, topsep=0pt, parsep=0pt, partopsep=0pt]
+		\item \texttt{Vollständigkeit}
+		\item \texttt{Eindeutigkeit}
+		\item \texttt{Wiederspruchsfreiheit}
+		\item \texttt{Testbarkeit der Anforderungen}
+	\end{itemize}
+	\item Zusätzlich wurden relevante Inhalte aus den Vorlesungsfolien zum Thema Qualitätsmanagement, Softwaretest und Anforderungsanalyse berücksichtigt.
+\end{itemize}
+
+\textbf{Identifizierte Probleme und Unklarheiten}
+
+\newcommand{\anforderung}[3]{%
+    \subsection*{Anforderung #1: #2}
+    \textbf{Problem/Unklarheit:} #3
+    
+    \vspace{0.3cm}
+    \textbf{Verbesserungsvorschlag:}
+}
+
+\anforderung{1}{Gebäudestruktur (1..n Gebäude, Eingänge, Wohnungen, Zähler)}
+{Keine klare Definition von „Eingang“. Ist ein Eingang ein Gebäudeteil oder eine logische Struktur?}
+{Definition eines Eingangs hinzufügen (z. B. „Ein Eingang ist eine physische oder logische Einheit, die Zugang zu Wohnungen ermöglicht.“).}
+
+\anforderung{2}{Verschiedene Zählertypen (Strom, Gas, Wasser)}
+{Sind weitere Zählertypen möglich? Falls ja, wie werden sie erfasst?}
+{Klarstellung, ob die Liste erweiterbar ist und wie neue Zählertypen ergänzt werden können.}
+
+\anforderung{3}{Zähler eindeutig identifizierbar (Zählernummer)}
+{Keine Angabe, welches Format oder welche Länge die Zählernummer haben muss.}
+{Definition des Formats der Zählernummer (z. B. „Die Zählernummer besteht aus einer eindeutigen 10-stelligen alphanumerischen ID.“).}
+
+\anforderung{4}{Auswahl von Daten per Selektion in der Struktur}
+{Welche Filter- und Suchmöglichkeiten gibt es?}
+{Ergänzung der Anforderungen zur Filterung (z. B. Suche nach Gebäude, Wohnung oder Zählertyp).}
+
+\anforderung{5}{Zähler haben einen Ablesewert (ganze Zahl)}
+{Was passiert bei fehlerhafter Eingabe? Kann der Wert korrigiert werden?}
+{Spezifikation einer Fehlerbehandlung für falsche Eingaben.}
+
+\anforderung{6}{Zähler sind über ihre ID zu finden}
+{Was passiert, wenn eine ID nicht existiert?}
+{Definition einer Fehlermeldung für nicht gefundene IDs.}
+
+\anforderung{7}{Zähler sollen abgelesen werden (Eingabe von Datum und Wert)}
+{Gibt es eine Validierung für vergangene/future Daten?}
+{Klarstellung, ob das Ablesedatum nur in der Vergangenheit oder auch in der Zukunft liegen darf.}
+
+\anforderung{8}{Zähler und Datum laufen nur vorwärts}
+{Fehlt eine Angabe zu Testfällen (z. B. wie rückdatierte Werte behandelt werden).}
+{Testfälle für Grenzwerte (min/max Werte für Datum) spezifizieren.}
+
+\anforderung{9}{Weitere Ableseinformationen eingeben (Ablesung, Schätzung)}
+{Müssen Nutzer einen Ablesetyp zwingend angeben oder gibt es Standardwerte?}
+{Standardwert oder Pflichtfeld definieren.}
+
+\anforderung{10}{Ableser-Informationen eingeben (Hauswart, Mieter, Energieversorger)}
+{Können mehrere Ableser für einen Zähler existieren?}
+{Klärung, ob Mehrfachzuweisungen erlaubt sind.}
+
+\anforderung{11}{Verbrauch berechnen und Anzeigen}
+{Sind historische Verbrauchswerte abrufbar?}
+{Definition, ob und wie Langzeitverbräuche gespeichert werden.}
+\\
+\\
+
+\textbf{Verantwortliche Personen und Datum}
+
+\begin{itemize}
+	\item Junior Lesage Ekane Njoh
+	\item Franck Majesté Silatsa Dogmo
+	\item Datum: \texttt{20.02.2025}
+\end{itemize}
