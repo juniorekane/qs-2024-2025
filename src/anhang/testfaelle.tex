@@ -3,6 +3,7 @@
 
 Die folgenden Testfälle überprüfen die wichtigsten Funktionen des Prototyps. Dabei werden \textbf{Unit-Tests, Integrationstests, Funktionstests und Negative Tests} berücksichtigt.
 
+\footnotesize
 \begin{center}
 	\begin{talltblr}[caption={Testfälle für die Hausverwaltungssoftware}, label={tab:testcases}]{width=0.9\textwidth, colspec={X[1,l,m] X[3,c,m] X[3,l,m] X[3,l,m] X[3,l,m]}}\toprule
 
@@ -12,8 +13,8 @@ Die folgenden Testfälle überprüfen die wichtigsten Funktionen des Prototyps. 
         TC-003 & Ablesewert negativ & `-10` als Ablesewert & Fehlermeldung: *„Ungültiger Ablesewert.“* & Negative Test \\ \cmidrule{1-5}
         TC-004 & Ablesewert kleiner als vorheriger Wert & Neuer Wert: `50`, alter Wert: `100` & Fehlermeldung: *„Neuer Wert muss größer sein als der vorherige.“* & Negative Test \\ \cmidrule{1-5}
         TC-005 & Korrekte Ablesung speichern & Neuer Wert: `250` & Wert wird korrekt gespeichert & Funktionstest \\ \cmidrule{1-5}
-        TC-006 & Eingabe einer zu langen Zähler-ID & `123-2024-45678` (11 Zeichen) & Fehlermeldung: *„Zähler-ID muss genau 10 Zeichen haben.“* & Negative Test \\ 
-        TC-007 & Filtern nach Gebäude und Zählertyp & Gebäude: `Haus A`, Zählertyp: `Strom` & Liste zeigt nur Stromzähler von `Haus A` & Integrationstest \\ 
+        TC-006 & Eingabe einer zu langen Zähler-ID & `123-2024-45678` (11 Zeichen) & Fehlermeldung: *„Zähler-ID muss genau 10 Zeichen haben.“* & Negative Test \\ \cmidrule{1-5}
+        TC-007 & Filtern nach Gebäude und Zählertyp & Gebäude: `Haus A`, Zählertyp: `Strom` & Liste zeigt nur Stromzähler von `Haus A` & Integrationstest \\ \cmidrule{1-5}
         TC-008 & Ablesedatum in der Zukunft & Datum: `01.01.2030` & Wert wird gespeichert & Funktionstest \\ \cmidrule{1-5}
         TC-009 & Ablesedatum rückdatiert & Datum: `01.01.2000` & Fehlermeldung: *„Datum darf nicht in der Vergangenheit liegen.“* & Negative Test \\ \cmidrule{1-5} 
         TC-010 & Standard-Ableser bei fehlender Eingabe & Ableser nicht eingetragen & Standardwert „Unbekannt“ wird gespeichert & Funktionstest \\ \cmidrule{1-5}
@@ -22,3 +23,5 @@ Die folgenden Testfälle überprüfen die wichtigsten Funktionen des Prototyps. 
         \bottomrule
     \end{talltblr}
 \end{center}
+
+\normalsize
