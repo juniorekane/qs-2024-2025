@@ -8,19 +8,23 @@ Die folgenden Testfälle überprüfen die wichtigsten Funktionen des Prototyps. 
 	\begin{talltblr}[caption={Testfälle für die Hausverwaltungssoftware}, label={tab:testcases}]{width=0.9\textwidth, colspec={X[1,l,m] X[3,c,m] X[3,l,m] X[3,l,m] X[3,l,m]}}\toprule
 
         \textbf{Test-ID} & \textbf{Beschreibung} & \textbf{Eingabe} & \textbf{Erwartetes Ergebnis} & \textbf{Testtyp} \\ \midrule
-        TC-001 & Zähler-ID existiert nicht & `999-9999-9999` & Fehlermeldung: *„Die eingegebene ID existiert nicht.“* & Negative Test \\ \cmidrule{1-5}
-        TC-002 & Gültige Zähler-ID eingeben & `123-2024-4567` & Zählerdetails werden angezeigt & Funktionstest \\ \cmidrule{1-5}
-        TC-003 & Ablesewert negativ & `-10` als Ablesewert & Fehlermeldung: *„Ungültiger Ablesewert.“* & Negative Test \\ \cmidrule{1-5}
-        TC-004 & Ablesewert kleiner als vorheriger Wert & Neuer Wert: `50`, alter Wert: `100` & Fehlermeldung: *„Neuer Wert muss größer sein als der vorherige.“* & Negative Test \\ \cmidrule{1-5}
-        TC-005 & Korrekte Ablesung speichern & Neuer Wert: `250` & Wert wird korrekt gespeichert & Funktionstest \\ \cmidrule{1-5}
-        TC-006 & Eingabe einer zu langen Zähler-ID & `123-2024-45678` (11 Zeichen) & Fehlermeldung: *„Zähler-ID muss genau 10 Zeichen haben.“* & Negative Test \\ \cmidrule{1-5}
-        TC-007 & Filtern nach Gebäude und Zählertyp & Gebäude: `Haus A`, Zählertyp: `Strom` & Liste zeigt nur Stromzähler von `Haus A` & Integrationstest \\ \cmidrule{1-5}
+        TC-001 & Zähler-ID existiert nicht & `999-9999-9999` & Fehlermeldung: „Die eingegebene ID existiert nicht.“ & Negative Test \\ \cmidrule{1-5}
+        TC-002 & Negativer Ablesewert & `-10` & Fehlermeldung: „Ungueltiger Ablesewert“ & Negative Test \\ \cmidrule{1-5}
+        TC-003 & Zählerlänge & `1-2024-4567823` & Fehlermeldung: „Zähler-ID muss genau 14 Zeichen haben!“ & Negative Test \\ \cmidrule{1-5}
+        TC-004 & Ablesedatum rückdatiert & `2000-01-01` & Fehlermeldung: „Datum darf nicht in der Vergangenheit liegen!“ & Negative Test \\ \cmidrule{1-5}
+        TC-005 & Ablesewert kleiner als vorheriger Wert & Neuer Wert: `50`, alter Wert: `100` & Fehlermeldung: „Neuer Wert muss größer sein als der vorherige.“ & Negative Test \\ \cmidrule{1-5}
+        TC-006 & Gültige Zähler-ID über die Suchfunktion eingeben & `1-2025-5487` & Zählerdetails werden angezeigt & Funktionstest \\ \cmidrule{1-5}
+        TC-007 & Korrekte Ablesung speichern & Alter Wert: 100, Neuer Wert: `250` & Wert wird korrekt gespeichert & Funktionstest \\ \cmidrule{1-5}
         TC-008 & Ablesedatum in der Zukunft & Datum: `01.01.2030` & Wert wird gespeichert & Funktionstest \\ \cmidrule{1-5}
-        TC-009 & Ablesedatum rückdatiert & Datum: `01.01.2000` & Fehlermeldung: *„Datum darf nicht in der Vergangenheit liegen.“* & Negative Test \\ \cmidrule{1-5} 
-        TC-010 & Standard-Ableser bei fehlender Eingabe & Ableser nicht eingetragen & Standardwert „Unbekannt“ wird gespeichert & Funktionstest \\ \cmidrule{1-5}
-        TC-011 & Historische Verbrauchswerte anzeigen & Monat: `Januar` & Diagramm zeigt Verbrauchswerte für Januar & Funktionstest \\ \cmidrule{1-5}
-        TC-012 & Suchfunktion mit Teilstring & Eingabe: `123` & Zeigt alle Zähler mit `123` in der ID & Integrationstest \\ \bottomrule
-        \bottomrule
+        TC-009 & Standard-Ableser bei fehlender Eingabe & Ableser nicht eingetragen & Standardwert „Unbekannt“ wird gespeichert & Funktionstest \\ \cmidrule{1-5}
+        TC-010 & Historische Verbrauchswerte anzeigen & Es wird die Schnittstelle für Verbauchshistorie mit der Gebäude-ID "1" abgerufen & Ablesungen sollen als Liste zurückgegeben werden oder als Grafik in der Weboberfläche & Funktionstest \\ \cmidrule{1-5}
+        TC-011 & Suchfunktion mit Teilstring & Eingabe: `123` & Zeigt alle Zähler mit `123` in der ID & Funktionstests \\ \cmidrule{1-5}
+        TC-012 & Massive Abelsungen & 10000 Ablesungen & Es werden alle Ablesungen in maximal 60 Sekunden gespeichert und keine Daten gehen verloren & Perfomance-Tests \\ \cmidrule{1-5}
+        TC-013 & Antwortzeit-Test & Es wird die index-Seite aufgerufen & Innerhalb von wenigen Millisekunden eine Antwort geliefert & Performance-Test \\ \cmidrule{1-5}
+        TC-014 & Massive Zählererstellung & 10000 Strom-Zähler & Alle Zähler werden hinzugefügt ohne zu lange Wartezeit & Performance-Test \\ \cmidrule{1-5}
+        TC-015 & Massive Gebäude erstellen & 10000 Strom-Zähler & Alle Gebäude werden hinzugefügt ohne zu lange Wartezeit & Performance-Test \\ \cmidrule{1-5}
+        TC-016 & Datenspeicherung und Datenabruf im JSON-Format & Dummy-Gebäude-Daten & Gebäude-Daten sollen gespeichert und abgerufen werden können. & Unit-Test \\ \cmidrule{1-5}
+        TC-017 & Zähler-ID-Generierung & 7 als Gebäude-ID und das aktuelle Jahr & Es soll eine gültige Zähler-ID generiert werden. & Unit-Test \\ \bottomrule
     \end{talltblr}
 \end{center}
 
