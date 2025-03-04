@@ -1,18 +1,97 @@
 \section{Testkonzept}\label{Testkonzept}
 
+Ein strukturiertes Testkonzept ist essenziell, um die Qualität und Stabilität der entwickelten Hausverwaltungssoftware sicherzustellen.  
+Da es sich um einen Prototype handelt, fokussieren wir uns auf technische Tests zur Funktionsprüfung und verzichten auf umfassende Usability- oder Systemtests.  
+Unser Ziel ist es, sicherzustellen, dass die Kernfunktionen fehlerfrei arbeiten, Daten korrekt verarbeitet werden und das System auch unter Last stabil bleibt.  
+Die Tests orientieren sich an etablierten Softwaretestverfahren und wurden so konzipiert, dass sie eine möglichst hohe Abdeckung der Anforderungen gewährleisten.\par
+
 \subsection{Auswahl von Testverfahren}
+
+Wir wissen aus der Vorlesung, dass sich Softwaretests grundsätzlich in drei Kategorien unterteilen lassen:
+
+\begin{itemize}
+	\item \textbf{White-Box-Testing:} Interne Logik der Software wird geprüft, Code-Abdeckung ist entscheidend.
+	\item \textbf{Black-Box-Testing:} Tests erfolgen ohne Kenntnis des Quellcodes, Fokus liegt auf den Ein- und Ausgaben des Systems.
+	\item \textbf{Gray-Box-Testing:} Kombination aus White-Box und Black-Box, teilweise Kenntnisse über den Code werden verwendet.
+\end{itemize}
+
+Basierend auf den Anforderungen der Hasuverwaltung haben wir uns für eine Kombination aus \textbf{Black-Box-Testing} und \textbf{Gray-Box-Testing} entschieden.
+Besonders relevant waren für uns folgende Techniken:
+\begin{itemize}
+	\item \textbf{Äquivalenzklassenbildung:} Gruppierung von Eingabewerten, um mit möglichst wenigen Tests eine hohe Abdeckung zu erzielen.
+	\item \textbf{Boundary-Value-Testing:} Überprüfung von Grenzwerten (z. B. Mindest- und Höchstwerte für Ablesungen).
+\end{itemize}
+
+Dass wir die Techniken bei uns hervorgehoben wurde, lässt sich dadurch erklären, dass unser Prottyp eine Webanwendung ist,  was dazu führt, dass der Fokus hier eher auf der
+Funktionalitätder Schnittstellen und Datenverarbeitung liegt. Außerdem reduziert die Äquivalenzklassenbildung die Anzahl der Testfälle, während trotzdem eine breite Abdeckung erreicht wird.
+Letzendlich ist Boundary-value-Testing essenziell für die Überprüfung von Verbrauchswerten und Ablesedaten.\par
 
 % Einführung in Software-Testmethoden: White-Box-, Black-Box- und Gray-Box-Testing
 % Auswahl geeigneter Verfahren für das Projekt (z. B. Äquivalenzklassenbildung, Boundary-Value-Testing)
 % Begründung der Auswahl basierend auf den Projektanforderungen
+\subsection{Testziele und Strategie}
 
-\subsection{Teststufen und Testarten}
+Für unser Testkonzept haben wir uns klare Testziele definiert, damit wir den Fokus behalten können und nicht unnötig Zeit auf Vorgänge investieren, die für das Projekt irrelevant sind.\par
+Wir haben folgende Ziele verfolgt:
+\begin{itemize}
+	\item Sicherstellen, dass die Kernfunktionen der Software korrekt arbeiten.
+	\item Überprüfung, ob Module und Komponenten korrekt zusammenarbeiten.
+	\item Validierung der Fehlerbehandlung durch gezielte Eingabe ungültiger Werte.
+	\item Sicherstellung der Performance unter hoher Last.
+\end{itemize}
 
+Damit die Testumsetzung für uns noch leichter wird, haben wir uns Teststrategien überlegt.
+Unser Testkonzept folgt einer \texttt{Botton-Up} Strategie, bei der zunächst einzelne Komponente geprüft und anschließend System- und Performancetests durchgeführt werden:\par
+\begin{itemize}
+	\item \textbf{Unit-Tests}: Isolierte Tests einzelner Funktionen (z. B. Validierung von Zähler-IDs oder Verbrauchsdaten).
+	\item \textbf{Funktionstests}: Prüfung der Geschäftslogik, u. a. Zählerverwaltung, Ablesungen und Verbrauchsberechnung.
+	\item \textbf{Performance-Tests}: Simulation von hoher Last, um die Skalierbarkeit zu überprüfen.
+	\item \textbf{Negative Tests}: Überprüfung der Fehlerbehandlung durch ungültige Eingaben.
+\end{itemize}
+
+
+\subsection{Testumgebung und Testdaten}
+
+\subsubsection{Testumgebung}
+
+Unsere Testumgebung haben wir versucht, so einfach wie möglich zu halten, damit wir nicht den Rahmen überspringen.
+Hier sind die Kernpunkte unserer Testumgebung aufgelistet:
+\begin{itemize}
+	\item Der Prototyp wird in einer lokalen Entwicklungsumgebung als Flask-Anwendung entwickelt und getestet.
+	\item Die Tests werden mithilfe von pytest automatisiert durchgeführt.
+    \item Performance-Tests erfolgen durch Simulation hoher Anfragen über eine Flask-Testumgebung.
+	\item Erstellung von Testfällen erfolgt nach den Prinzipien von Äquivalenzklassenbildung und Grenzwertanalyse.
+\end{itemize}
+
+\subsubsection{Testdaten}
+
+Zur Testen gehören auch Testdaten zur Simulation, weil wir noch bei einem Prototyp sind, dessen Einsatz in einer produktiven Umgebung geplant ist.
+
+\begin{itemize}
+	\item Eine Testdatenbank mit Dummy-Daten wird verwendet.
+	\item Persistenz der Daten erfolgt über JSON-Dateien.
+	\item Für Lasttests werden 1000 simultane Ablesungen simuliert.
+    \item Testfälle für Grenzwerte und ungültige Werte (z. B. negative Ablesungen) wurden vorbereitet.
+\end{itemize}
 % Unit-Tests, Integrationstests, Systemtests, Abnahmetests
 % Funktionale und nicht-funktionale Tests (z. B. Usability, Performance)
 % Automatisierte vs. manuelle Tests
 
-\subsection{Testumgebung und Testdaten}
+\subsubsection{Ausgewähllte Testverfahren}
 
-% Beschreibung der Testumgebung (z. B. Tools, Frameworks)
-% Erstellung von Testdaten für realistische Szenarien
+\begin{center}
+	\begin{talltblr}[caption={Ausgewählte Testverfahren}, label={Testverfahren}]{width=0.9\textwidth, colspec={X[3,l,m] X[5,c,m]X[5,l,m]}}\toprule
+		\textbf{Testverfahren} & \textbf{Einsatzbereich} & \SetCell[c=1]{c} \textbf{Begründung} \\ \midrule
+		
+		Unit-Tests & Einzelne Funktionen wie Datenvalidierung, ID-Format, Speicherung von Ablesewerten & Frühes Erkennen von Fehlern in einzelnen Modulen. \\ \cmidrule{1-3}
+		Funktionstests  & Überprüfung der gesamten Funktionalität wie Zählerverwaltung, Ablesungen, Filterung, Verbrauchsanzeige & Sicherstellung der korrekten Umsetzung der Anforderungen. \\ \cmidrule{1-3}
+		Performance-Tests  & Simulation hoher Last durch 1000+ gleichzeitige Ablesungen & Sicherstellung, dass das System auch mit vielen Gebäuden und Zählern performant bleibt. \\ \cmidrule{1-3}
+		Negative Tests  & Eingabe ungültiger Werte (z. B. leere Felder, falsche ID, negatives Datum) & Überprüfung der Fehlerbehandlung und Robustheit des Systems. \\ \bottomrule
+
+	\end{talltblr}
+\end{center}
+
+Mit diesem Testkonzept soll erreicht werden, dass die Kernfunktionen des Prototyps validiert werden, ohne unnötig komplexe oder produktionstaugliche Tests durchzuführen.
+Die Kombination aus \textbf{Unit-Tests, Funktionstests, Performance-Tests und Negativen Tests} bietet eine solide Basis für die Qualitätssicherung.  
+Mit diesem Ansatz wird überprüft, ob das System stabil und fehlerresistent ist, sowie unter hoher Last zuverlässig arbeitet.  
+Die Testergebnisse werden in einer strukturierten Form dokumentiert, um Erkenntnisse für mögliche Optimierungen des Prototyps zu gewinnen.\par
