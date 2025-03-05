@@ -5,7 +5,24 @@ Da es sich um einen Prototype handelt, fokussieren wir uns auf technische Tests 
 Unser Ziel ist es, sicherzustellen, dass die Kernfunktionen fehlerfrei arbeiten, Daten korrekt verarbeitet werden und das System auch unter Last stabil bleibt.  
 Die Tests orientieren sich an etablierten Softwaretestverfahren und wurden so konzipiert, dass sie eine möglichst hohe Abdeckung der Anforderungen gewährleisten.\par
 
-\subsection{Auswahl von Testverfahren}
+\subsection{Testziele und Strategie}
+
+Für unser Testkonzept haben wir uns klare Testziele definiert, damit wir den Fokus behalten können und nicht unnötig viele Szenarien testen müssen.\par
+Unsere Hauptziele sind:
+\begin{itemize}
+	\item Sicherstellen, dass die Kernfunktionen der Software korrekt arbeiten.
+	\item Überprüfung, ob Module und Komponenten korrekt zusammenarbeiten.
+	\item Validierung der Fehlerbehandlung durch gezielte Eingabe ungültiger Werte.
+	\item Sicherstellung der Performance unter hoher Last.
+\end{itemize}
+
+Unser Testkonzept folgt einer auf \texttt{Botton-Up-Ansatz} basierten Strategie, bei der zunächst einzelne Komponente geprüft und anschließend System- und Performancetests durchgeführt werden:\par
+\begin{itemize}
+	\item \textbf{Zunächst Unit-Tests}: Isolierte Tests einzelner Funktionen (z. B. Validierung von Zähler-IDs oder Verbrauchsdaten).
+	\item \textbf{Danach Funktionstests}: Prüfung der Geschäftslogik, u. a. Zählerverwaltung, Ablesungen und Verbrauchsberechnung.
+	\item \textbf{Anschließend negative Tests}: Überprüfung der Fehlerbehandlung durch ungültige Eingaben.
+	\item \textbf{Schließlich Performance-Tests}: Simulation von hoher Last, um die Skalierbarkeit zu überprüfen.
+\end{itemize}
 
 Wir wissen aus der Vorlesung, dass sich Softwaretests grundsätzlich in drei Kategorien unterteilen lassen:
 
@@ -15,40 +32,28 @@ Wir wissen aus der Vorlesung, dass sich Softwaretests grundsätzlich in drei Kat
 	\item \textbf{Gray-Box-Testing:} Kombination aus White-Box und Black-Box, teilweise Kenntnisse über den Code werden verwendet.
 \end{itemize}
 
-Basierend auf den Anforderungen der Hasuverwaltung haben wir uns für eine Kombination aus \textbf{Black-Box-Testing} und \textbf{Gray-Box-Testing} entschieden.
-Besonders relevant waren für uns folgende Techniken:
-\begin{itemize}
-	\item \textbf{Äquivalenzklassenbildung:} Gruppierung von Eingabewerten, um mit möglichst wenigen Tests eine hohe Abdeckung zu erzielen.
-	\item \textbf{Boundary-Value-Testing:} Überprüfung von Grenzwerten (z. B. Mindest- und Höchstwerte für Ablesungen).
-\end{itemize}
+Aus diesem Grund  haben wir uns eine Kombination aus \textbf{Black-Box-Testing} und \textbf{Gray-Box-Testing} entschieden, um die Funktionalität aus Nutzersicht zu prüfen und gezielt Fehlerfälle im Code zu analysieren.\
+Wir setzen auch die \textbf{Äquivalenzklassenbildung} ein, um Eingaben in Gruppen zu testen und mit wenigen Tests eine hohe Abdeckung zu erreichen. Enorm hat uns auch \textbf{Boundary-Value-Testing} geholfen, Grenzwerte (z.B. minimale und maximale Verbrauchswerte) gezielt zu überprüfen.\par
 
-Dass wir die Techniken bei uns hervorgehoben wurde, lässt sich dadurch erklären, dass unser Prottyp eine Webanwendung ist,  was dazu führt, dass der Fokus hier eher auf der
-Funktionalitätder Schnittstellen und Datenverarbeitung liegt. Außerdem reduziert die Äquivalenzklassenbildung die Anzahl der Testfälle, während trotzdem eine breite Abdeckung erreicht wird.
+Unsere Entscheidung , uns auf diese Techniken zu konzentrieren, basiert auf der Tatsache, dass unser
+Prototyp eine Webanwendung ist, wobei der Fokus auf der Funktionalität der Schnittstellen und Datenverarbeitung liegt. Die Äquivalenzklassenbildung reduziert die Anzahl der Testfälle, während trotzdem eine breite Abdeckung erreicht wird.
 Letzendlich ist Boundary-value-Testing essenziell für die Überprüfung von Verbrauchswerten und Ablesedaten.\par
 
-% Einführung in Software-Testmethoden: White-Box-, Black-Box- und Gray-Box-Testing
-% Auswahl geeigneter Verfahren für das Projekt (z. B. Äquivalenzklassenbildung, Boundary-Value-Testing)
-% Begründung der Auswahl basierend auf den Projektanforderungen
-\subsection{Testziele und Strategie}
+\subsection{Testarten}
 
-Für unser Testkonzept haben wir uns klare Testziele definiert, damit wir den Fokus behalten können und nicht unnötig Zeit auf Vorgänge investieren, die für das Projekt irrelevant sind.\par
-Wir haben folgende Ziele verfolgt:
-\begin{itemize}
-	\item Sicherstellen, dass die Kernfunktionen der Software korrekt arbeiten.
-	\item Überprüfung, ob Module und Komponenten korrekt zusammenarbeiten.
-	\item Validierung der Fehlerbehandlung durch gezielte Eingabe ungültiger Werte.
-	\item Sicherstellung der Performance unter hoher Last.
-\end{itemize}
+Um unser System effizient zu testen, haben wir vier Teststufen definiert:
 
-Damit die Testumsetzung für uns noch leichter wird, haben wir uns Teststrategien überlegt.
-Unser Testkonzept folgt einer \texttt{Botton-Up} Strategie, bei der zunächst einzelne Komponente geprüft und anschließend System- und Performancetests durchgeführt werden:\par
-\begin{itemize}
-	\item \textbf{Unit-Tests}: Isolierte Tests einzelner Funktionen (z. B. Validierung von Zähler-IDs oder Verbrauchsdaten).
-	\item \textbf{Funktionstests}: Prüfung der Geschäftslogik, u. a. Zählerverwaltung, Ablesungen und Verbrauchsberechnung.
-	\item \textbf{Performance-Tests}: Simulation von hoher Last, um die Skalierbarkeit zu überprüfen.
-	\item \textbf{Negative Tests}: Überprüfung der Fehlerbehandlung durch ungültige Eingaben.
-\end{itemize}
+\begin{center}
+	\begin{talltblr}[caption={Testarten}, label={Testarten}]{width=0.9\textwidth, colspec={X[3,l,m] X[5,c,m]X[5,l,m]}}\toprule
+		\textbf{Testverfahren} & \textbf{Ziel} & \SetCell[c=1]{c} \textbf{Begründung} \\ \midrule
+		
+		Unit-Tests & Einzelne Funktionen wie Datenvalidierung, ID-Format, Speicherung von Ablesewerten & Frühes Erkennen von Fehlern in einzelnen Modulen. \\ \cmidrule{1-3}
+		Funktionstests  & Überprüfung der gesamten Funktionalität wie Zählerverwaltung, Ablesungen, Filterung, Verbrauchsanzeige & Sicherstellung der korrekten Umsetzung der Anforderungen. \\ \cmidrule{1-3}
+		Performance-Tests  & Simulation hoher Last durch 1000+ gleichzeitige Ablesungen & Sicherstellung, dass das System auch mit vielen Gebäuden und Zählern performant bleibt. \\ \cmidrule{1-3}
+		Negative Tests  & Eingabe ungültiger Werte (z. B. leere Felder, falsche ID, negatives Datum) & Überprüfung der Fehlerbehandlung und Robustheit des Systems. \\ \bottomrule
 
+	\end{talltblr}
+\end{center}
 
 \subsection{Testumgebung und Testdaten}
 
@@ -77,21 +82,44 @@ Zur Testen gehören auch Testdaten zur Simulation, weil wir noch bei einem Proto
 % Funktionale und nicht-funktionale Tests (z. B. Usability, Performance)
 % Automatisierte vs. manuelle Tests
 
-\subsubsection{Ausgewähllte Testverfahren}
+\subsubsection{Ableitung konkreter Testfällen}
+
+Die Qualität eines Softwareprojets steht sowie es auch fällt mit der sorgfältigen Überprüfung seiner Funktionen.
+Daher haben wir aus unseren Anforderungen gezielt abgeleitet, um sicherzustellen, dass der Prototyp alle Anforderungen erfüllt und fehlerfrei arbeitet.
+Wir haben wie oben schon aufgelistet, vier Testarten gewählt
+
+\footnotesize
 
 \begin{center}
-	\begin{talltblr}[caption={Ausgewählte Testverfahren}, label={Testverfahren}]{width=0.9\textwidth, colspec={X[3,l,m] X[5,c,m]X[5,l,m]}}\toprule
-		\textbf{Testverfahren} & \textbf{Einsatzbereich} & \SetCell[c=1]{c} \textbf{Begründung} \\ \midrule
-		
-		Unit-Tests & Einzelne Funktionen wie Datenvalidierung, ID-Format, Speicherung von Ablesewerten & Frühes Erkennen von Fehlern in einzelnen Modulen. \\ \cmidrule{1-3}
-		Funktionstests  & Überprüfung der gesamten Funktionalität wie Zählerverwaltung, Ablesungen, Filterung, Verbrauchsanzeige & Sicherstellung der korrekten Umsetzung der Anforderungen. \\ \cmidrule{1-3}
-		Performance-Tests  & Simulation hoher Last durch 1000+ gleichzeitige Ablesungen & Sicherstellung, dass das System auch mit vielen Gebäuden und Zählern performant bleibt. \\ \cmidrule{1-3}
-		Negative Tests  & Eingabe ungültiger Werte (z. B. leere Felder, falsche ID, negatives Datum) & Überprüfung der Fehlerbehandlung und Robustheit des Systems. \\ \bottomrule
+	\begin{talltblr}[caption={Testfälle für die Hausverwaltungssoftware}, label={tab:testcases}]{width=0.9\textwidth, colspec={X[1,l,m] X[3,c,m] X[3,l,m] X[3,l,m] X[3,l,m]}}\toprule
 
-	\end{talltblr}
+        \textbf{Test-ID} & \textbf{Beschreibung} & \textbf{Eingabe} & \textbf{Erwartetes Ergebnis} & \textbf{Testtyp} \\ \midrule
+        TC-001 & Zähler-ID existiert nicht & `999-9999-9999` & Fehlermeldung: „Die eingegebene ID existiert nicht.“ & Negative Test \\ \cmidrule{1-5}
+        TC-002 & Negativer Ablesewert & `-10` & Fehlermeldung: „Ungueltiger Ablesewert“ & Negative Test \\ \cmidrule{1-5}
+        TC-003 & Zählerlänge & `1-2024-4567823` & Fehlermeldung: „Zähler-ID muss genau 14 Zeichen haben!“ & Negative Test \\ \cmidrule{1-5}
+        TC-004 & Ablesedatum rückdatiert & `2000-01-01` & Fehlermeldung: „Datum darf nicht in der Vergangenheit liegen!“ & Negative Test \\ \cmidrule{1-5}
+        TC-005 & Ablesewert kleiner als vorheriger Wert & Neuer Wert: `50`, alter Wert: `100` & Fehlermeldung: „Neuer Wert muss größer sein als der vorherige.“ & Negative Test \\ \cmidrule{1-5}
+        TC-006 & Gültige Zähler-ID über die Suchfunktion eingeben & `1-2025-5487` & Zählerdetails werden angezeigt & Funktionstest \\ \cmidrule{1-5}
+        TC-007 & Korrekte Ablesung speichern & Alter Wert: 100, Neuer Wert: `250` & Wert wird korrekt gespeichert & Funktionstest \\ \cmidrule{1-5}
+        TC-008 & Ablesedatum in der Zukunft & Datum: `01.01.2030` & Wert wird gespeichert & Funktionstest \\ \cmidrule{1-5}
+        TC-009 & Standard-Ableser bei fehlender Eingabe & Ableser nicht eingetragen & Standardwert „Unbekannt“ wird gespeichert & Funktionstest \\ \cmidrule{1-5}
+        TC-010 & Historische Verbrauchswerte anzeigen & Es wird die Schnittstelle für Verbauchshistorie mit der Gebäude-ID "1" abgerufen & Ablesungen sollen als Liste zurückgegeben werden oder als Grafik in der Weboberfläche & Funktionstest \\ \cmidrule{1-5}
+        TC-011 & Suchfunktion mit Teilstring & Eingabe: `123` & Zeigt alle Zähler mit `123` in der ID & Funktionstests \\ \cmidrule{1-5}
+        TC-012 & Massive Abelsungen & 10000 Ablesungen & Es werden alle Ablesungen in maximal 60 Sekunden gespeichert und keine Daten gehen verloren & Perfomance-Tests \\ \cmidrule{1-5}
+        TC-013 & Antwortzeit-Test & Es wird die index-Seite aufgerufen & Innerhalb von wenigen Millisekunden eine Antwort geliefert & Performance-Test \\ \cmidrule{1-5}
+        TC-014 & Massive Zählererstellung & 10000 Strom-Zähler & Alle Zähler werden hinzugefügt ohne zu lange Wartezeit & Performance-Test \\ \cmidrule{1-5}
+        TC-015 & Massive Gebäude erstellen & 10000 Strom-Zähler & Alle Gebäude werden hinzugefügt ohne zu lange Wartezeit & Performance-Test \\ \cmidrule{1-5}
+        TC-016 & Datenspeicherung und Datenabruf im JSON-Format & Dummy-Gebäude-Daten & Gebäude-Daten sollen gespeichert und abgerufen werden können. & Unit-Test \\ \cmidrule{1-5}
+        TC-017 & Zähler-ID-Generierung & 7 als Gebäude-ID und das aktuelle Jahr & Es soll eine gültige Zähler-ID generiert werden. & Unit-Test \\ \bottomrule
+    \end{talltblr}
 \end{center}
 
-Mit diesem Testkonzept soll erreicht werden, dass die Kernfunktionen des Prototyps validiert werden, ohne unnötig komplexe oder produktionstaugliche Tests durchzuführen.
-Die Kombination aus \textbf{Unit-Tests, Funktionstests, Performance-Tests und Negativen Tests} bietet eine solide Basis für die Qualitätssicherung.  
-Mit diesem Ansatz wird überprüft, ob das System stabil und fehlerresistent ist, sowie unter hoher Last zuverlässig arbeitet.  
-Die Testergebnisse werden in einer strukturierten Form dokumentiert, um Erkenntnisse für mögliche Optimierungen des Prototyps zu gewinnen.\par
+\normalsize
+
+Unser Testkonzept ist also sehr umfassend, deckt die meisten möglichen Szenarien ab und stellt sicher, dass der Prototyp funktionsfähig, robust und performant ist. Durch die gewählte Kombination aus unseren Testarten wollen wir eine praxisnahe Qualitätssicherung erreichen.\par
+
+\subsection{Testfälle Dokumentation}
+
+Die Tests, die wir oben aufgeführt haben, wurden in einer strukturierten Flask-Umgebung mit pytest automatisiert ausgeführt.
+Um die Nachvollziehbarkeit zu gewährleisten, wurden alle Testergebnisse in einem Testprotokoll dokumentiert. Die Testergebnissse zeigen, dass der Prototyp die definiertenn Anforderungen erfüllt, wobei
+vor allem Performance-Tests dazu beitragen, die Skalierbarkeit des Systems zu bewerten.
