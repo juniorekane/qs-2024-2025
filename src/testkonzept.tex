@@ -78,11 +78,8 @@ Zur Testen gehören auch Testdaten zur Simulation, weil wir noch bei einem Proto
 	\item Für Lasttests werden 1000 simultane Ablesungen simuliert.
     \item Testfälle für Grenzwerte und ungültige Werte (z. B. negative Ablesungen) wurden vorbereitet.
 \end{itemize}
-% Unit-Tests, Integrationstests, Systemtests, Abnahmetests
-% Funktionale und nicht-funktionale Tests (z. B. Usability, Performance)
-% Automatisierte vs. manuelle Tests
 
-\subsubsection{Ableitung konkreter Testfällen}
+\subsection{Ableitung konkreter Testfällen}
 
 Die Qualität eines Softwareprojets steht sowie es auch fällt mit der sorgfältigen Überprüfung seiner Funktionen.
 Daher haben wir aus unseren Anforderungen gezielt abgeleitet, um sicherzustellen, dass der Prototyp alle Anforderungen erfüllt und fehlerfrei arbeitet.
@@ -108,7 +105,7 @@ Wir haben wie oben schon aufgelistet, vier Testarten gewählt
         TC-012 & Massive Abelsungen & 10000 Ablesungen & Es werden alle Ablesungen in maximal 60 Sekunden gespeichert und keine Daten gehen verloren & Perfomance-Tests \\ \cmidrule{1-5}
         TC-013 & Antwortzeit-Test & Es wird die index-Seite aufgerufen & Innerhalb von wenigen Millisekunden eine Antwort geliefert & Performance-Test \\ \cmidrule{1-5}
         TC-014 & Massive Zählererstellung & 10000 Strom-Zähler & Alle Zähler werden hinzugefügt ohne zu lange Wartezeit & Performance-Test \\ \cmidrule{1-5}
-        TC-015 & Massive Gebäude erstellen & 10000 Strom-Zähler & Alle Gebäude werden hinzugefügt ohne zu lange Wartezeit & Performance-Test \\ \cmidrule{1-5}
+        TC-015 & Massive Gebäude erstellen & 10000 Gebäude & Alle Gebäude werden hinzugefügt ohne zu lange Wartezeit & Performance-Test \\ \cmidrule{1-5}
         TC-016 & Datenspeicherung und Datenabruf im JSON-Format & Dummy-Gebäude-Daten & Gebäude-Daten sollen gespeichert und abgerufen werden können. & Unit-Test \\ \cmidrule{1-5}
         TC-017 & Zähler-ID-Generierung & 7 als Gebäude-ID und das aktuelle Jahr & Es soll eine gültige Zähler-ID generiert werden. & Unit-Test \\ \bottomrule
     \end{talltblr}
@@ -117,9 +114,4 @@ Wir haben wie oben schon aufgelistet, vier Testarten gewählt
 \normalsize
 
 Unser Testkonzept ist also sehr umfassend, deckt die meisten möglichen Szenarien ab und stellt sicher, dass der Prototyp funktionsfähig, robust und performant ist. Durch die gewählte Kombination aus unseren Testarten wollen wir eine praxisnahe Qualitätssicherung erreichen.\par
-
-\subsection{Testfälle Dokumentation}
-
-Die Tests, die wir oben aufgeführt haben, wurden in einer strukturierten Flask-Umgebung mit pytest automatisiert ausgeführt.
-Um die Nachvollziehbarkeit zu gewährleisten, wurden alle Testergebnisse in einem Testprotokoll dokumentiert. Die Testergebnissse zeigen, dass der Prototyp die definiertenn Anforderungen erfüllt, wobei
-vor allem Performance-Tests dazu beitragen, die Skalierbarkeit des Systems zu bewerten.
+\nopagebreak
