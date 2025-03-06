@@ -1,15 +1,63 @@
-\section{Dokumentation der Testfälle}\label{Dokumentation der Testfälle}
+\section{Dokumentation der TestErgenbisse}\label{Dokumentation der Testergebnisse}
 
-\subsection{Überblick über getestete Funktionalitäten}
+\subsection{Überblick über die Testergebnisse}
 
+
+\footnotesize
+
+%TODO: Ergebisse vervollständigen
+
+\begin{center}
+	\begin{talltblr}[caption={Testfälle für die Hausverwaltungssoftware}, label={tab:testcases}]{width=0.9\textwidth, colspec={X[1,l,m] X[3,c,m] X[3,l,m] X[3,l,m] X[3,l,m]}}\toprule
+
+        \textbf{Test-ID} & \textbf{Eingabe} & \textbf{Erwartetes Ergebnis} & \textbf{Tatsächliches Ergebnis} & \textbf{Status} \\ \midrule
+        TC-001 & `999-9999-9999` & Fehlermeldung: „Die eingegebene ID existiert nicht.“ & Fehlermeldung wurde korrekt ausgegeben & Bestanden\\ \cmidrule{1-5}
+        TC-002 & `-10` & Fehlermeldung: „Ungueltiger Ablesewert“ & Fehlermeldung wurde korrekt ausgegeben & Bestanden \\ \cmidrule{1-5}
+        TC-003 & `1-2024-4567823` & Fehlermeldung: „Zähler-ID muss genau 14 Zeichen haben!“ & Fehlermeldung wurde korrekt ausgegeben & Bestanden\\ \cmidrule{1-5}
+        TC-004 & `2000-01-01` & Fehlermeldung: „Datum darf nicht in der Vergangenheit liegen!“ & Fehlermeldung wurde korrekt ausgegeben & Bestanden\\ \cmidrule{1-5}
+        TC-005 & Neuer Wert: `50`, alter Wert: `100` & Fehlermeldung: „Neuer Wert muss größer sein als der vorherige.“ & Fehlermeldung wurde korrekt ausgegeben & Bestanden\\ \cmidrule{1-5}
+        TC-006 & `1-2025-5487` & Zählerdetails werden angezeigt & Zählerdetails wurden angezeigt & Bestanden\\ \cmidrule{1-5}
+        TC-007 & Alter Wert: 100, Neuer Wert: `250` & Wert wird korrekt gespeichert & Wert wurde erfolgreich gespeichert & Bestanden\\ \cmidrule{1-5}
+        TC-008 & Datum: `01.01.2030` & Wert wird gespeichert & Wert wurde erfolgreich gespeichert & Bestanden\\ \cmidrule{1-5}
+        TC-009 & Ableser nicht eingetragen & Standardwert „Unbekannt“ wird gespeichert & Wert wurde erfolgreich gespeichert & Bestanden\\ \cmidrule{1-5}
+        TC-010 & Es wird die Schnittstelle für Verbauchshistorie mit der Gebäude-ID "1" abgerufen & Ablesungen sollen als Liste zurückgegeben werden oder als Grafik in der Weboberfläche & Ablesungen wurden als List über die API und als Grafik über die Weboberfläche zurückgegeben & Bestanden\\ \cmidrule{1-5}
+        TC-011 & Eingabe: `123` & Zeigt alle Zähler mit `123` in der ID & Alle Zähler behinhaltend "123" wurden angezeigt & Bestanden \\ \cmidrule{1-5}
+        TC-012 & 10000 Ablesungen & Es werden alle Ablesungen in maximal 60 Sekunden gespeichert und keine Daten gehen verloren & Es sind keine Datenverloren gegangen & Bestanden \\ \cmidrule{1-5}
+        TC-013 & Es wird die index-Seite aufgerufen & Innerhalb von wenigen Millisekunden eine Antwort geliefert & Index-Seite wurde innerhalb von 0.2 Millisekunden angezeigt & Bestanden \\ \cmidrule{1-5}
+        TC-014 & 10000 Strom-Zähler & Alle Zähler werden hinzugefügt ohne zu lange Wartezeit & Es wurden alle Zähler innerhalb von 0.7 Millisekunden ohne Datenverlust hinzugefügt & Bestanden\\ \cmidrule{1-5}
+        TC-015 & 10000 Gebäude & Alle Gebäude werden hinzugefügt ohne zu lange Wartezeit & Alle Gebäude wurden ohne Datenverlust innerhalb 0.8 hinzugefügt & Bestanden \\ \cmidrule{1-5}
+        TC-016 & Dummy-Gebäude-Daten & Gebäude-Daten sollen gespeichert und abgerufen werden können. & Daten konnten korrekt gespeichert und wieder ausgelesen werden & Bestanden\\ \cmidrule{1-5}
+        TC-017 & 7 als Gebäude-ID und das aktuelle Jahr & Es soll eine gültige Zähler-ID generiert werden. & ID wurde korrekt generiert & Bestanden\\ \bottomrule
+    \end{talltblr}
+\end{center}
+
+\normalsize
 
 % Definition von Testfällen basierend auf den Anforderungen
 % Testfallbeschreibung mit ID, Testschritt, erwartetes Ergebnis
-% Beispiele für positive und negative Testfälle
-
-\subsection{Testfalldokumentation}
-
-% Strukturierte Darstellung der Testfälle in einer Tabelle oder einem Testmanagement-Tool
-% Bedeutung der Nachverfolgbarkeit von Anforderungen zu Testfällen
+% Beispiele für positive und  &fälle
 
 \subsection{Analyse der Testergebnisse}
+
+Die Testergebnisse zeigen, dass der Prototyp die definierten Anfordernugen weitesgehend erfüllt. Tests haben verschiedene Erkenntnisse geliefert, die für zukünftige optimierungen genutzt werden können.
+
+\subsubsection{Erfolgreiche Tests}
+
+\begin{itemize}
+    \item Alle Unit-Tests wurden besatnden, was zeigt, dass die Kernfunktionen (z.B.: ID-Generierung, Datenspeicherung) korrekt arbeiten.
+    \item alle Funktionstests sind erfolgreich, sodass die Hausverwaltung ihre Grundfunktionen fehlerfrei ausführt.
+    \item Alle negative Tests wurden auch erfolgreich ausgeführt, was zeigt, dass der Prototyp keine unzulässigen Eingabe akzeptiert.
+    \item Performance-Tests bestätigen, dass das System stabil mit großen Datenmengen umgehen kann. IDes könnte nützlich sein, wenn der Prototypp in einer realen Umgebung für eine große Verwaltungsfirma eingesetzt werden soll.
+\end{itemize}
+
+\subsubsection{Verbesserungsbedarf}
+Allerdings ist uns auch beim Testen einiges aufgefallen und zwar gibt es möglicherweise auch Verbesserungsbedarf, was mana an unserem Prototyp kritisieren könnte.
+Da könnte man auf die folgende Punkte eingehen:
+\begin{itemize}
+    \item Beim Massentest von 1.000.000 gab es 7 fehlerhafte Einträge, da Zähler-IDs nicht doppelt existieren dürfen. Hierfür haben wir uns als Lösung ausgedacht, dass wir eine bessere ID-Prüfung vor dem Speichern einführen könnten.
+    \item Die Verarbeitungsgeschwinsdigkeit war insgesamt gut, aber für noch größere Datenmengen könnte eine optimierte Datenbankstruktur erforderlich sein. Darüber hinaus könnte man mit dem Punkt Sicherheit unsere Datenpersistänz kritisieren, da die Daten ungeschützt gespeichert werden.
+    Unsere Lösung hierfür wäre eine Umstelllung auf eine sicherere Datenbank wie etwas MariaDb für eine produktive Umgebung.
+\end{itemize} 
+
+
+Angesichts dieser Analyse ist festzustellen, dass unser Prototyp die wichtigsten anforderungen erfüllt und eine stabile Grundlage für eine erweiterte Version bietet.
