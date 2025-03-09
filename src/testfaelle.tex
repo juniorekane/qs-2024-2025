@@ -7,6 +7,9 @@
 
 %TODO: Ergebisse vervollständigen
 
+In diesem Abschnitt werden die durchgeführten Tests dokumentiert. Dabei wurden verschiedene Testarten angewandt, um die Funktionsweise und Stabilität des Systems zu validieren. 
+Die Testergebnisse basieren auf einer Kombination aus automatisierten Tests mit pytest und manuellen Überprüfungen in der Web-Oberfläche.\par
+
 \begin{center}
 	\begin{talltblr}[caption={Testfälle für die Hausverwaltungssoftware}, label={tab:testcases}]{width=0.9\textwidth, colspec={X[1,l,m] X[3,c,m] X[3,l,m] X[3,l,m] X[3,l,m]}}\toprule
 
@@ -17,15 +20,15 @@
         TC-004 & `2000-01-01` & Fehlermeldung: „Datum darf nicht in der Vergangenheit liegen!“ & Fehlermeldung wurde korrekt ausgegeben & Bestanden\\ \cmidrule{1-5}
         TC-005 & Neuer Wert: `50`, alter Wert: `100` & Fehlermeldung: „Neuer Wert muss größer sein als der vorherige.“ & Fehlermeldung wurde korrekt ausgegeben & Bestanden\\ \cmidrule{1-5}
         TC-006 & `1-2025-5487` & Zählerdetails werden angezeigt & Zählerdetails wurden angezeigt & Bestanden\\ \cmidrule{1-5}
-        TC-007 & Alter Wert: 100, Neuer Wert: `250` & Wert wird korrekt gespeichert & Wert wurde erfolgreich gespeichert & Bestanden\\ \cmidrule{1-5}
-        TC-008 & Datum: `01.01.2030` & Wert wird gespeichert & Wert wurde erfolgreich gespeichert & Bestanden\\ \cmidrule{1-5}
-        TC-009 & Ableser nicht eingetragen & Standardwert „Unbekannt“ wird gespeichert & Wert wurde erfolgreich gespeichert & Bestanden\\ \cmidrule{1-5}
+        TC-007 & Alter Wert: 100, Neuer Wert: `250` & Wert wird korrekt gespeichert & Die Ablesewerte wurden gemäß den Spezifikationen korrekt gespeichert & Bestanden\\ \cmidrule{1-5}
+        TC-008 & Datum: `01.01.2030` & Wert wird gespeichert & Die Ablesewerte wurden gemäß den Spezifikationen korrekt gespeichert & Bestanden\\ \cmidrule{1-5}
+        TC-009 & Ableser nicht eingetragen & Standardwert „Unbekannt“ wird gespeichert & Die Ablesewerte wurden gemäß den Spezifikationen korrekt gespeichert & Bestanden\\ \cmidrule{1-5}
         TC-010 & Es wird die Schnittstelle für Verbauchshistorie mit der Gebäude-ID "1" abgerufen & Ablesungen sollen als Liste zurückgegeben werden oder als Grafik in der Weboberfläche & Ablesungen wurden als List über die API und als Grafik über die Weboberfläche zurückgegeben & Bestanden\\ \cmidrule{1-5}
         TC-011 & Eingabe: `123` & Zeigt alle Zähler mit `123` in der ID & Alle Zähler behinhaltend "123" wurden angezeigt & Bestanden \\ \cmidrule{1-5}
         TC-012 & 10000 Ablesungen & Es werden alle Ablesungen in maximal 60 Sekunden gespeichert und keine Daten gehen verloren & Es sind keine Datenverloren gegangen & Bestanden \\ \cmidrule{1-5}
         TC-013 & Es wird die index-Seite aufgerufen & Innerhalb von wenigen Millisekunden eine Antwort geliefert & Index-Seite wurde innerhalb von 0.2 Millisekunden angezeigt & Bestanden \\ \cmidrule{1-5}
-        TC-014 & 10000 Strom-Zähler & Alle Zähler werden hinzugefügt ohne zu lange Wartezeit & Es wurden alle Zähler innerhalb von 0.7 Millisekunden ohne Datenverlust hinzugefügt & Bestanden\\ \cmidrule{1-5}
-        TC-015 & 10000 Gebäude & Alle Gebäude werden hinzugefügt ohne zu lange Wartezeit & Alle Gebäude wurden ohne Datenverlust innerhalb 0.8 hinzugefügt & Bestanden \\ \cmidrule{1-5}
+        TC-014 & 10000 Strom-Zähler & Alle Zähler werden hinzugefügt ohne zu lange Wartezeit & Die erwartete Antwortzeit sollte unter 1 Sekunde bleiben, tatsächlich lag sie bei durchschnittlich 0.7 Sekunden, was innerhalb der akzeptablen Grenze liegt. Die Testdaten wurden vollständig und korrekt gespeichert & Bestanden\\ \cmidrule{1-5}
+        TC-015 & 10000 Gebäude & Alle Gebäude werden hinzugefügt ohne zu lange Wartezeit & Die erwartete Antwortzeit sollte unter 1 Sekunde bleiben, tatsächlich lag sie bei durchschnittlich 0.8 Sekunden, was innerhalb der akzeptablen Grenze liegt. Die Testdaten wurden vollständig und korrekt gespeichert & Bestanden \\ \cmidrule{1-5}
         TC-016 & Dummy-Gebäude-Daten & Gebäude-Daten sollen gespeichert und abgerufen werden können. & Daten konnten korrekt gespeichert und wieder ausgelesen werden & Bestanden\\ \cmidrule{1-5}
         TC-017 & 7 als Gebäude-ID und das aktuelle Jahr & Es soll eine gültige Zähler-ID generiert werden. & ID wurde korrekt generiert & Bestanden\\ \bottomrule
     \end{talltblr}
@@ -40,6 +43,7 @@
 \subsection{Analyse der Testergebnisse}
 
 Die Testergebnisse zeigen, dass der Prototyp die definierten Anfordernugen weitesgehend erfüllt. Tests haben verschiedene Erkenntnisse geliefert, die für zukünftige optimierungen genutzt werden können.
+Die hohe Erfolgsquote zeigt, dass der Prototyp stabil und zuverlässig arbeitet. Insbesondere die korrekte Verarbeitung von Zähler-IDs und Verbrauchswerten konnte nachgewiesen werden.\par
 
 \subsubsection{Erfolgreiche Tests}
 
@@ -61,3 +65,4 @@ Da könnte man auf die folgende Punkte eingehen:
 
 
 Angesichts dieser Analyse ist festzustellen, dass unser Prototyp die wichtigsten anforderungen erfüllt und eine stabile Grundlage für eine erweiterte Version bietet.
+Allerdings wäre für eine produktive Umgebung der Wechsel von JSON zu einer relationalen Datenbank sinnvoll, um eine effizientere Abfrage und bessere Skalierbarkeit zu gewährleisten.
