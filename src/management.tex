@@ -1,12 +1,54 @@
 \section{Qualitätsmanagement-Methoden in der Softwareentwicklung}\label{Qualitätsmanagement-Methoden in der Softwareentwicklung}
 
+Aufgrund  der zentralen Rolle, was Qualitätssicherung in der Softwareentwicklung spielt, sollten wir uns diese Gelegenheit nicht entgehen lassen, eine reflektierende und wissenschaftliche Betrachtung der angewendeten QS-Methoden in unserem Projekts zu liefern, daher sollten wir auch\\
+in diesem Zusammenhang die Bedeutung von Qualitätssicherung herausarbeiten und dann konkret auf die Anwendung von QS-Methoden in unserem Projekt eingehen.\par
+
 \subsection{Relevanz der Qualitätssicherung}
 
-% Bedeutung von Qualitätssicherung in Softwareprojekten
-% Auswirkungen schlechter Anforderungen und unzureichender Tests
+In der Softwareentwicklung spielt die Qualitätssicherung (QS) eine entscheidende Rolle, um sicherzustellen, dass Anwendungen fehlerfrei funktionieren, effizient arbeiten und benutzerfreundlich sind.\par
+
+Mangelhafte QS kann zu Fehlfunktionen, Sicherheitslücken und höheren Kosten führen, da nachträgliche Fehlerkorrekturen aufwendiger sind als eine frühzeitige Fehlervermeidung.\par
+
+Gerade in unserem Projekt, einem hausverlatungssystem, ist eine präzise Qualitätssicherung unerlässlich. Die Anwendung muss zuverlässig arbeiten, um sicherzustellen, dass Verbrauchsdaten korrekt verarbeitet unnd angezeigt werden,\\
+damit eine fehlerfreie Abrechnung möglich ist. Außerdem müssen Fehlermeldung konsisten und verständlich sein, damit Nutzer wissen, was schiefgelaufen ist und wie sie das Problem beheben können.
+Zudem soll die Anwendung auch bei hoher Nutzerlast stabil bleiben, insbesondere wenn viele Gebäude und Zähler verwaltet werden müssen.
+Um diese Risiken zu minimieren, haben wir gezielt QS-Maßnahmen in unser Projekt integriert.\par
+
+Unsere wichtigsten Maßnahmen zur Sicherstellung der Softwarequalität sind:
+
+\begin{itemize}
+    \item Ein Anforderungs-Review nach \textbf{ISO 20246}, um Unklarheiten frühzeitig zu identifizieren und widersprüchliche Anforderungen zu vermeiden.
+    \item Ein strukturiertes Testkonzept, das verschiedene Testarten wie Unit-Tests, Funktionstests, Negative Tests und Performance-Tests umfasst.
+    \item Traceability zwischen Anforderungen und Testfällen, um sicherzustellen, dass jede relevante Anforderungen auch tatsächlich getestet wird.
+\end{itemize}
+
 
 \subsection{Anwendung von QS-Methoden im Projekt}
 
-% Anforderungen als Basis für Testfallentwicklung (Traceability)
-% Dokumentation und Nachvollziehbarkeit als QS-Maßnahmen
-% Lessons Learned aus dem Projekt
+Die Qualitätssicherung unseres Projekts erfolgte in mehreren Phasen, um eine hohe Softwarequalität und Stabilität sicherzustellen. 
+Dabei haben wir gezielt Maßnahmen ergriffen, die Fehler frühzeitig identifizieren und die Nachverfolgbarkeit der Anforderungen verbessern.\par
+
+Ein zentraler Bestandteil unserer Qualitätssicherung war die direkte Verknüpfung der Anforderungen mit den Testfällen.
+Dadurch konnten wir sicherstellen, dass jede implementierte Funktion einer definierten Anforderung entspricht und getestet wird.
+Alle Testfälle wurden aus den überarbeiteten Anforderungen abgeleitet und Unser technisches Review half uns, Anforderungen von der Implementierung zu präzisieren und spätere Fehler zu vermeiden.\par
+
+Anforderungen sind ein wichtiger Punkt als Basis für die Implementierung vom Prototyp, dennoch sollten wir auch nicht vergessen, dass es noch wichtiger ist, die Prozesse zu dokumentieren, besonders die Tests. 
+Eine strukturierte Testdokumentation war essenziell, um die Testergebnisse systematisch zu erfassen und nachvollziehbar zu machen.
+Die Testergebnisse haben wir in einer Tabelle festgehalten, sodass jede Test-ID direkt mit einer Anforderung verknüpft ist. Außerdem haben wir fehlerhafte Test genau analysieret und dies führte zu gezielten Verbesserungen im Code.
+Durch diese automatisierte Nachverfolgbarkeit konnten wir effizient Schwachstellen identifizieren und beheben, wodurch sich die Qualität des Prototyps erheblich verbesserte.\par
+
+\subsection{Lessons Learned}
+
+Wir können es nicht in Abrede stellen, dass uns die Anwendung von Qualitätssicherungsmethoden wertvolle Erkenntnisse gebracht hat, die über den reinen Testprozess hinausgehen.
+Wie wir diese Qualitätsmanßnahmen konkrekt in unserem Projekt umgesetzt haben, wird im Folgenden erläutert:
+
+\begin{itemize}
+    \item \textbf{Früheres Review der Anforderungen hilft, Fehler zu vermeiden:} Unklare oder fehlerhafte Anforderungen führen zu einem erhöhten Testaufwand und Nachbesserungen.
+    Durch unser strukturiertes Anforderungs-Review konnten wir dies minimieren und von Anfang an präzisere Anforderungen definieren.
+    \item \textbf{automatisierte Tests sparen Zeit und erhöhen die Testabdeckung:} Manuelle Tests sind zeitaufwendig und fehleranfällig beispielsweise durch Konfigurationsfehler oder Eingabefehler.
+    Mit \texttt{pytext} konnten wir wiederholbare Tests automatisieren und schneller fehler identifizieren.
+    \item \textbf{Performance-Tests sind essenziell für die Skarlierbarkeit:} Unsere Lasttests zeigten, dass das System stabil mit großen Datenmengen umgehen kann.
+    Allerdings haben wir erkannt, dass für eine echte Skalierbarkeit eine relationale Datenbank vorteilhafter wäre als die aktuelle JSON-basierte Speicherung.
+    \item \textbf{Fehlermeldungen sind genauso wichtig wie korrekte Funktionen:} Nicht nur fehlerfreie Funktionen, sondern auch verständliche Fehlermeldungen tragen zur Benutzerfreundlichkeit bei.
+    Durch gezielte Tests konnten wir sicherstellen, dass Fehlermeldungen für ungültige Zähler-IDs, falsche Ablesewerte oder negative Werte klar und nachvollziehbar sind.
+\end{itemize}
