@@ -4,3 +4,34 @@
 % Zielsetzung: Verbesserung der Qualität durch strukturierte Anforderungsanalyse und Testkonzept
 % Relevanz des Themas im Kontext des Qualitätsmanagements und Software-Testings
 % Überblick über die Inhalte der Arbeit
+
+Im Rahmen dieses Projekts haben wir eine Hausverwaltungssoftware prototypisch entwickelt und dabei einen umfassenden softwaretechnischen Prozess durchlaufen – von der Anforderungsanalyse über die Implementierung bis hin zur Qualitätssicherung.
+Unser Ziel war es, ein System zu entwerfen, das die Erfassung, Verwaltung und Analyse von Verbrauchsdaten effizient unterstützt und dabei stabil, fehlerresistent und benutzerfreundlich ist.
+
+Die Anforderungsanalyse bildete die Grundlage für die Entwicklung unseres Prototyps.
+Durch ein technisches Review nach ISO 20246 konnten wir potenzielle Unklarheiten in den ursprünglichen Anforderungen identifizieren und gezielt verbessern.
+Die Trennung zwischen funktionalen und nicht-funktionalen Anforderungen hat sich als vorteilhaft erwiesen, da sie die Strukturierung und Testbarkeit unseres Systems erleichtert hat.
+
+Auf Basis dieser überarbeiteten Anforderungen wurde ein strukturiertes Testkonzept entwickelt.
+Durch die Kombination von Unit-Tests, Funktionstests, negativen Tests und Performance-Tests konnten wir die wichtigsten Systemfunktionen validieren und sicherstellen, dass das System auch unter Last stabil bleibt.
+Die durchgeführten Tests bestätigten die Korrektheit der Kernfunktionen und deckten potenzielle Optimierungsansätze auf, insbesondere in Bezug auf die Skalierbarkeit und Datenspeicherung.
+
+Die Implementierung unseres Prototyps folgte einer modularen Architektur mit einem Flask-Backend, einer JSON-basierten Datenspeicherung und einer webbasierte Benutzeroberfläche.
+Diese Architektur ermöglichte eine schnelle Entwicklung und eine einfache Testbarkeit. Herausforderungen, wie die Validierung von Ablesedaten oder die Simulation von Lasttests, wurden durch gezielte Anpassungen und Optimierungen erfolgreich gemeistert.
+
+Unsere Qualitätssicherungsmaßnahmen haben sich als effektiv erwiesen, um Fehler frühzeitig zu identifizieren und das System iterativ zu verbessern. 
+Die Rückverfolgbarkeit zwischen Anforderungen und Testfällen trug wesentlich dazu bei, dass keine kritische Funktion ungetestet blieb.
+Zudem zeigten unsere Performance-Tests, dass das System mit hohen Datenmengen umgehen kann, auch wenn eine relationale Datenbank für eine produktive Umgebung empfehlenswert wäre.
+
+Zusammenfassend hat unser Prototyp die wesentlichen Anforderungen erfolgreich umgesetzt und bietet eine solide Grundlage für eine Weiterentwicklung.
+Falls das System für eine produktive Umgebung ausgebaut werden soll, wären folgende Maßnahmen sinnvoll:
+
+\begin{itemize} 
+    \item Migration von JSON zu einer relationalen Datenbank für bessere Skalierbarkeit und Sicherheit. 
+    \item Erweiterung der Performance-Tests mit größeren Datenmengen und realistischen Nutzungsszenarien. 
+    \item Einführung automatisierter UI-Tests zur Überprüfung der Benutzerfreundlichkeit. 
+    \item Implementierung weiterer Fehlerbehandlungen und Sicherheitsmechanismen. 
+\end{itemize}
+
+Dieses Projekt hat uns gezeigt, wie entscheidend eine strukturierte Anforderungsanalyse, ein fundiertes Testkonzept und iterative Qualitätssicherungsmaßnahmen für die erfolgreiche Entwicklung einer Software sind.
+Die gewonnenen Erkenntnisse und Erfahrungen aus diesem Projekt werden uns in zukünftigen Softwareentwicklungsprojekten von großem Nutzen sein.
