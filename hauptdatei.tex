@@ -296,7 +296,7 @@ Author={\theauthor}
 \ofoot{\pagemark}
 
 % Hier werden die Trennvorschläge inkludiert
-\input{src/basic_structure/trennung.tex}
+\input{src/basic_structure/trennung}
 
 % Leere Seite am Anfang
 %\thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
@@ -304,7 +304,7 @@ Author={\theauthor}
 %\newpage
 
 % Titelseite 
-\input{src/basic_structure/deckblatt.tex}
+\input{src/basic_structure/deckblatt}
 \newpage
 
 % Singlespacing (Zeilenabstand) (Default)
@@ -321,22 +321,19 @@ Author={\theauthor}
 \tableofcontents
 % \newpage
 \pagestyle{headings}
-
+4
 % Header für den Inhalt 
 \KOMAoptions{headsepline=true}
 \ohead{\headmark}
 
-\newpage
-
 % Input Inhalt
-\input{src/einleitung.tex}
-\input{src/anforderungsanalyse.tex}
-\input{src/testkonzept.tex}
-\input{src/prototyp.tex}
-\input{src/management.tex}
-\input{src/fazit.tex}
+\input{src/einleitung}
+\input{src/anforderungsanalyse}
+\input{src/testkonzept}
+\input{src/prototyp}
+\input{src/management}
+\input{src/fazit}
 
-\newpage
 
 % Literaturverzeichnis anzeigen
 \ohead{Literaturverzeichnis} % Korrektur für Header 
@@ -374,7 +371,7 @@ Author={\theauthor}
 \ohead{}
 
 % Beginn Anhang
-\input{src/anhang/anhang_deckblatt.tex}
+%\input{src/anhang/anhang_deckblatt}
 
 % Anhang römisch 
 \renewcommand{\thesection}{\Roman{section}}
@@ -404,7 +401,7 @@ Author={\theauthor}
 \ohead{Selbstständigkeitserklärung}
 
 % Input Erklärung
-\input{src/basic_structure/erklaerung.tex}
+\input{src/basic_structure/erklaerung}
 
 % Leere Abschlussseite
 %\newpage
