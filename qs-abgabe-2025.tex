@@ -125,7 +125,7 @@
   dynnumwidth]{tocline}{chapter,section,subsection,subsubsection,paragraph,subparagraph,figure,table}
 
 % Für schönere Listings
-\usepackage[newfloat,]{minted}
+\usepackage[outputdir=log, newfloat,]{minted}
 \setminted{
   frame=lines,
   framesep=2mm,
@@ -319,9 +319,9 @@ Author={\theauthor}
 % Inhaltsverzeichnis anzeigen
 \pagestyle{empty}
 \tableofcontents
-% \newpage
+\newpage
 \pagestyle{headings}
-4
+
 % Header für den Inhalt 
 \KOMAoptions{headsepline=true}
 \ohead{\headmark}
@@ -333,7 +333,7 @@ Author={\theauthor}
 \input{src/prototyp}
 \input{src/management}
 \input{src/fazit}
-
+\newpage
 
 % Literaturverzeichnis anzeigen
 \ohead{Literaturverzeichnis} % Korrektur für Header 
@@ -349,6 +349,11 @@ Author={\theauthor}
 % \addcontentsline{toc}{section}{Abbildungsverzeichnis}
 % \newpage
 
+
+% Tabellenverzeichnis anzeigen
+\listoftables
+\addcontentsline{toc}{section}{Tabellenverzeichnis}
+\newpage
 
 
 % Listingverzeichnis anzeigen

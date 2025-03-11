@@ -17,7 +17,7 @@ Unsere Hauptziele sind:
 	\item Sicherstellung der Performance unter hoher Last.
 \end{itemize}
 
-Unser Testkonzept folgt einer auf \texttt{Botton-Up-Ansatz} basierten Strategie, bei der zunächst einzelne Komponente geprüft und anschließend System- und Performancetests durchgeführt werden:\par
+Unser Testkonzept folgt einer auf \texttt{bottom-up-ansatz}basierten Strategie, bei der zunächst einzelne Komponente geprüft und anschließend System- und Performancetests durchgeführt werden:
 \begin{itemize}
 	\item \textbf{Zunächst Unit-Tests}: Isolierte Tests einzelner Funktionen (z.B. Validierung von Zähler-IDs oder Verbrauchsdaten).
 	\item \textbf{Danach Funktionstests}: Prüfung der Geschäftslogik, u.a. Zählerverwaltung, Ablesungen und Verbrauchsberechnung.
@@ -86,7 +86,7 @@ Zur Testen gehören auch Testdaten zur Simulation, weil wir noch bei einem Proto
 
 \subsection{Ableitung konkreter Testfällen}\label{subsec:ableitung-konkreter-testfallen}
 
-Die Qualität eines Softwareprojekts steht sowie es auch fällt mit der sorgfältigen Überprüfung seiner Funktionen.
+Die gründliche Kontrolle der Funktionen ist entscheidend für die Qualität eines Softwareprojekts: Sie bestimmt, ob das Projekt erfolgreich ist oder nicht.
 Daher haben wir aus unseren Anforderungen gezielt abgeleitet, um sicherzustellen, dass der Prototyp alle Anforderungen erfüllt und fehlerfrei arbeitet.
 Wir haben wie oben schon aufgelistet, vier Testarten gewählt
 
@@ -111,8 +111,8 @@ Wir haben wie oben schon aufgelistet, vier Testarten gewählt
         TC-NF4-13 & Antwortzeit-Test & Es wird die index-Seite aufgerufen & Innerhalb von wenigen Millisekunden eine Antwort geliefert & Performance-Test \\ \cmidrule{1-5}
         TC-NF7-14 & Massive Zählererstellung & 10000 Strom-Zähler & Alle Zähler werden hinzugefügt ohne zu lange Wartezeit & Performance-Test \\ \cmidrule{1-5}
         TC-NF7-15 & Massive Gebäude erstellen & 10000 Gebäude & Alle Gebäude werden hinzugefügt ohne zu lange Wartezeit & Performance-Test \\ \cmidrule{1-5}
-        TC-F1-16 & Datenspeicherung und Datenabruf im JSON-Format & Dummy-Gebäude-Daten & Gebäude-Daten sollen gespeichert und abgerufen werden können. & Unit-Test \\ \cmidrule{1-5}
-        TC-F3-17 & Zähler-ID-Generierung & 7 als Gebäude-ID und das aktuelle Jahr & Es soll eine gültige Zähler-ID generiert werden. & Unit-Test \\ \bottomrule
+        TC-F1-16 & Datenspeicherung und Datenabruf im JSON-Format & Dummy-Gebäude-Daten & Gebäude-Daten sollen gespeichert und abgerufen werden können.\ & Unit-Test \\ \cmidrule{1-5}
+        TC-F3-17 & Zähler-ID-Generierung & 7 als Gebäude-ID und das aktuelle Jahr & Es soll eine gültige Zähler-ID generiert werden.\ & Unit-Test \\ \bottomrule
     \end{longtblr}
 \end{center}
 \normalsize
