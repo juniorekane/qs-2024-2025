@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #lualatex poster.tex
-latexmk -pdf -lualatex -shell-escape -interaction=nonstopmode -f -outdir=log hauptdatei.tex 
+latexmk -pdf -lualatex -shell-escape -interaction=nonstopmode -f -outdir=log qs-abgabe-2025.tex 
 
-mv log/hauptdatei.pdf ./ 
-cp hauptdatei.pdf /var/www/html/
+mv log/qs-abgabe-2025.pdf ./ 
+cp qs-abgabe-2025.pdf /var/www/html/

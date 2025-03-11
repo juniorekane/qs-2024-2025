@@ -75,8 +75,8 @@ Es erfolgt zuerst eine Überprüfung, ob die erforderlichen Werte vorhanden und 
 Danach wird geprüft, ob der Zähler zur richtigen gebäude-ID gehört, wenn ja dann erfolgt eine Validierung, ob der neue Ablesewert nicht kleiner als der vorherige ist.
 Sind alle Bedingungen erfüllt, wird die Ablesung gespeichert und eine Erfolgsmeldung zurückgegeben.
 
-
-\begin{code}{code Example one}{breaking}
+\footnotesize
+\defverbatim\CodeOne{
     \begin{minted}{python}
     @app.route("/ablesung/hinzufuegen", methods=["POST"])
         def ablesung_hinzufuegen():
@@ -141,8 +141,10 @@ Sind alle Bedingungen erfüllt, wird die Ablesung gespeichert und eine Erfolgsme
 
         return jsonify({"message": "Ablesung erfolgreich gespeichert", "ableser": ableser}), 201
     \end{minted}
-\end{code}
-
+    \captionof{listing}{Python Code \textit{ablesung\_hinzufuegen}}
+}
+\normalsize
+\newpage
 \textbf{Funktion: }\texttt{verbrauchsanzeige()}
 
 Diese Funktion berechnet den Verbrauch und generiert eine grafische Darstellung für den User.
@@ -151,9 +153,10 @@ Es werden zuerst die Verbrauchsdaten aus der JSON-Datei abgerufen und basierend 
 mit Matplotlib zur Visualisierung des Verbrauchs erstellt.
 Anschließend wird das Diagramm gespeichert und auf der Weboberfläche angezeigt.
 
-\begin{code}{Code Example Two}{breaklines}
+\footnotesize
+\defverbatim\CodeOne{
     \begin{minted}{python}
-        @app.route("/verbrauch", methods=["GET"])
+    @app.route("/verbrauch", methods=["GET"])
         def verbrauchsanzeige():
         ablesungen = load_json(ABLESUNG_FILE)
         gebaeude = load_json(GEBAEUDE_FILE)
@@ -190,9 +193,10 @@ Anschließend wird das Diagramm gespeichert und auf der Weboberfläche angezeigt
         plt.close()
 
         return render_template("verbrauch.html", gebaeude=gebaeude, selected_gebaeude=selected_gebaeude, verbrauchspfad=save_path)
-
     \end{minted}
-\end{code}
+    \captionof{listing}{Python Code \textit{Verbrauchsanzeige}}
+}
+\normalsize
 
 \subsubsection{Herausforderungen während der Umsetzung}
 
