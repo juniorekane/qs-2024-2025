@@ -2,7 +2,7 @@
 \section{Testkonzept}\label{sec:testkonzept}
 
 Ein strukturiertes Testkonzept ist essenziell, um die Qualität und Stabilität der entwickelten Hausverwaltungssoftware sicherzustellen.  
-Da es sich um einen Prototype handelt, fokussieren wir uns auf technische Tests zur Funktionsprüfung und verzichten auf umfassende Usability- oder Systemtests.  
+Da es sich um einen Prototypen handelt, fokussieren wir uns auf technische Tests zur Funktionsprüfung und verzichten auf umfassende Usability- oder Systemtests.  
 Unser Ziel ist es, sicherzustellen, dass die Kernfunktionen fehlerfrei funktionieren, Daten korrekt verarbeitet werden und das System auch unter Last stabil bleibt.
 Die Tests orientieren sich an etablierten Softwaretestverfahren und wurden so konzipiert, dass sie eine möglichst hohe Abdeckung der Anforderungen gewährleisten.
 
@@ -17,7 +17,7 @@ Unsere Hauptziele sind:
 	\item Sicherstellung der Performance unter hoher Last.
 \end{itemize}
 
-Unser Testkonzept folgt einer auf \texttt{bottom-up-ansatz}basierten Strategie, bei der zunächst einzelne Komponente geprüft und anschließend System- und Performancetests durchgeführt werden:
+Unser Testkonzept folgt einer auf \texttt{bottom-up-ansatz} basierten Strategie, bei der zunächst einzelne Komponente geprüft und anschließend Funktions- und Performancetests durchgeführt werden:
 \begin{itemize}
 	\item \textbf{Zunächst Unit-Tests}: Isolierte Tests einzelner Funktionen (z.B. Validierung von Zähler-IDs oder Verbrauchsdaten).
 	\item \textbf{Danach Funktionstests}: Prüfung der Geschäftslogik, u.a. Zählerverwaltung, Ablesungen und Verbrauchsberechnung.
@@ -25,22 +25,11 @@ Unser Testkonzept folgt einer auf \texttt{bottom-up-ansatz}basierten Strategie, 
 	\item \textbf{Schließlich Performance-Tests}: Simulation von hoher Last, um die Skalierbarkeit zu überprüfen.
 \end{itemize}
 
-Wir wissen aus der Vorlesung, dass sich Softwaretests grundsätzlich in drei Kategorien unterteilen lassen:
-
-\begin{itemize}
-	\item \textbf{White-Box-Testing:} Interne Logik der Software wird geprüft, Code-Abdeckung ist entscheidend.
-	\item \textbf{Black-Box-Testing:} Tests erfolgen ohne Kenntnis des Quellcodes, Fokus liegt auf den Ein- und Ausgaben des Systems.
-	\item \textbf{Gray-Box-Testing:} Kombination aus White-Box und Black-Box, teilweise Kenntnisse über den Code werden verwendet.
-\end{itemize}
-
-Aus diesem Grund  haben wir uns eine Kombination aus \textbf{Black-Box-Testing} und \textbf{Gray-Box-Testing} entschieden, um die Funktionalität aus Nutzersicht zu prüfen und gezielt Fehlerfälle im Code zu analysieren.
-Wir setzen auch die \textbf{Äquivalenzklassenbildung} ein, um Eingaben in Gruppen zu testen und mit wenigen Tests eine hohe Abdeckung zu erreichen.
-Enorm hat uns auch \textbf{Boundary-Value-Testing} geholfen, Grenzwerte (z.B. minimale und maximale Verbrauchswerte) gezielt zu überprüfen.
-
-Unsere Entscheidung, uns auf diese Techniken zu konzentrieren, basiert auf der Tatsache, dass unser
-Prototyp eine Webanwendung ist, wobei der Fokus auf der Funktionalität der Schnittstellen und Datenverarbeitung liegt.
-Die Äquivalenzklassenbildung reduziert die Anzahl der Testfälle, während trotzdem eine breite Abdeckung erreicht wird.
-Letztendlich ist Boundary-value-Testing essenziell für die Überprüfung von Verbrauchswerten und Ablesedaten.
+Wir haben uns für ein \textbf{Boundary-value-Testing} als zentraler Bestandteil unserer Teststrategie entschieden,
+da viele Funktionen des Systems von numerischen Eingaben abhängig sind. Besonders bei der Erfassung von Verbrauchsdaten
+und Ablesewerten ist es entscheidend, Grenzwerte zu identifizieren und zu validieren.
+Daher haben wir gezielt minimale und maximale Wertebereiche getestet, um sicherzustellen,
+dass unser System robuste Validierungen durchführt und fehlerhafte Eingaben korrekt verarbeitet.
 
 \subsection{Testarten}\label{subsec:testarten}
 
@@ -75,7 +64,7 @@ Hier sind die Kernpunkte unserer Testumgebung aufgelistet:
 
 \subsubsection{Testdaten}
 
-Zur Testen gehören auch Testdaten zur Simulation, weil wir noch bei einem Prototyp sind, dessen Einsatz in einer produktiven Umgebung geplant ist.
+Zum Testen gehören auch Testdaten zur Simulation, weil wir noch bei einem Prototyp sind, dessen Einsatz in einer produktiven Umgebung geplant ist.
 
 \begin{itemize}
 	\item Eine Testdatenbank mit Dummy-Daten wird verwendet.
@@ -86,7 +75,8 @@ Zur Testen gehören auch Testdaten zur Simulation, weil wir noch bei einem Proto
 
 \subsection{Ableitung konkreter Testfällen}\label{subsec:ableitung-konkreter-testfallen}
 
-Die gründliche Kontrolle der Funktionen ist entscheidend für die Qualität eines Softwareprojekts: Sie bestimmt, ob das Projekt erfolgreich ist oder nicht.
+Die gründliche Kontrolle der Funktionen ist entscheidend für die Qualität eines Softwareprojekts.
+Sie bestimmt, ob das Projekt erfolgreich ist oder nicht.
 Daher haben wir aus unseren Anforderungen gezielt abgeleitet, um sicherzustellen, dass der Prototyp alle Anforderungen erfüllt und fehlerfrei arbeitet.
 Wir haben wie oben schon aufgelistet, vier Testarten gewählt
 

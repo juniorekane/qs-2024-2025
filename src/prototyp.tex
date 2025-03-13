@@ -233,7 +233,7 @@ Die Testergebnisse basieren auf einer Kombination aus automatisierten Tests mit 
 
 \footnotesize
 \begin{center}
-\begin{longtblr}[caption={Testfälle für die Hausverwaltungssoftware}, label={tab:testcases}]{width=0.9\textwidth, colspec={X[2,l,m] X[3,c,m] X[3,l,m] X[3,l,m] X[3,l,m]}}\toprule
+\begin{longtblr}[caption={Überblick über die Testergebnisse}, label={tab:testcases}]{width=0.9\textwidth, colspec={X[2,l,m] X[3,c,m] X[3,l,m] X[3,l,m] X[3,l,m]}}\toprule
 
         \textbf{Test-ID} & \textbf{Eingabe} & \textbf{Erwartetes Ergebnis} & \textbf{Tatsächliches Ergebnis} & \textbf{Status} \\ \midrule
         TC-F6-01 & `999-9999-9999` & Fehlermeldung: „Die eingegebene ID existiert nicht.“ & Fehlermeldung wurde korrekt ausgegeben & Bestanden\\ \cmidrule{1-5}
@@ -281,11 +281,11 @@ Insbesondere die korrekte Verarbeitung von Zähler-IDs und Verbrauchswerten konn
 Allerdings ist uns auch beim Testen einiges aufgefallen und zwar gibt es möglicherweise auch Verbesserungsbedarf, was mana an unserem Prototyp kritisieren könnte.
 Da könnte man auf die folgende Punkte eingehen:
 \begin{itemize}
-    \item Bei einem versuchten Massentest von 1.000.000 gab es 7 fehlerhafte Einträge, da Zähler-IDs nicht doppelt existieren dürfen.
+    \item Bei einem versuchten Massentest von 10000 gab es 7 fehlerhafte Einträge, da Zähler-IDs nicht doppelt existieren dürfen.
     Hierfür haben wir uns als Lösung ausgedacht, dass wir eine bessere ID-Prüfung vor dem Speichern einführen könnten.
     \item Die Verarbeitungsgeschwindigkeit war insgesamt gut, aber für noch größere Datenmengen könnte eine optimierte Datenbankstruktur erforderlich sein.
     Darüber hinaus könnte man mit dem Punkt Sicherheit unsere Datenpersistenz kritisieren, da die Daten ungeschützt gespeichert werden.
-    Unsere Lösung hierfür wäre eine Umstellung auf eine sicherere Datenbank wie etwas MariaDb für eine produktive Umgebung.
+    Unsere Lösung hierfür wäre eine Umstellung auf eine sicherere Datenbank wie etwas MariaDB für eine produktive Umgebung.
 \end{itemize}
 
 Angesichts dieser Analyse ist festzustellen, dass unser Prototyp die wichtigsten anforderungen erfüllt und eine stabile Grundlage für eine erweiterte Version bietet.

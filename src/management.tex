@@ -4,31 +4,34 @@
 Aufgrund der zentralen Rolle, was Qualitätssicherung in der Softwareentwicklung spielt, sollten wir uns diese Gelegenheit nicht entgehen lassen, eine reflektierende und wissenschaftliche Betrachtung der angewendeten QS-Methoden in unserem Projekt zu liefern, daher sollten wir auch
 in diesem Zusammenhang die Bedeutung von Qualitätssicherung herausarbeiten und dann konkret auf die Anwendung von QS-Methoden in unserem Projekt eingehen.
 
+
 \subsection{Relevanz der Qualitätssicherung}\label{subsec:relevanz-der-qualitatssicherung}
 
-In der Softwareentwicklung spielt die Qualitätssicherung (QS) eine entscheidende Rolle, um sicherzustellen, dass Anwendungen fehlerfrei funktionieren, effizient arbeiten und benutzerfreundlich sind.
+In der Softwareentwicklung spielt die Qualitätssicherung (QS) eine entscheidende Rolle, um sicherzustellen, dass Anwendungen fehlerfrei funktionieren, effizient arbeiten und benutzerfreundlich sind \cite{DaiglGlunz2024}.
 
-Mangelhafte QS kann zu Fehlfunktionen, Sicherheitslücken und höheren Kosten führen, da nachträgliche Fehlerkorrekturen aufwendiger sind als eine frühzeitige Fehlervermeidung.
+Mangelhafte QS kann zu Fehlfunktionen und Systemausfälle führen, die Datenverlust oder Nutzungseinschränkungen provozieren.
+Außerdem verursachen Sicherheitslücken aufgrund von ungeprüften Schwachstellen, die von Angreifern genutzt werden könnten \cite{DaiglGlunz2024},
+höheren Kosten, da nachträgliche Fehlerkorrekturen aufwendiger sind als eine frühzeitige Fehlervermeidung.
+Es besteht auch das Problem der geringen Benutzerakzeptanz, da eine schlechte Usability oder Performance dazu führen kann, dass die Software nicht genutzt wird \cite{Röttgeretal2024}.
 
 Gerade in unserem Projekt, einem Hausverwaltungssystem, ist eine präzise Qualitätssicherung unerlässlich.
 Die Anwendung muss zuverlässig arbeiten, um sicherzustellen, dass Verbrauchsdaten korrekt verarbeitet und angezeigt werden, damit eine fehlerfreie Abrechnung möglich ist.
-Außerdem müssen Fehlermeldung konsistenz und verständlich sein, damit Nutzer wissen, was schiefgelaufen ist und wie sie das Problem beheben können.
+Außerdem müssen Fehlermeldung konsistenz und verständlich sein, damit Nutzer wissen, was genau schiefgelaufen ist und wie sie das Problem beheben können.
 Zudem soll die Anwendung auch bei hoher Nutzerlast stabil bleiben, insbesondere wenn viele Gebäude und Zähler verwaltet werden müssen.
-Um diese Risiken zu minimieren, haben wir gezielt QS-Maßnahmen in unser Projekt integriert.
-
-Unsere wichtigsten Maßnahmen zur Sicherstellung der Softwarequalität sind:
-
-\begin{itemize}
-    \item Ein Anforderung-Review nach \textbf{ISO 20246}, um Unklarheiten frühzeitig zu identifizieren und widersprüchliche Anforderungen zu vermeiden.
-    \item Ein strukturiertes Testkonzept, das verschiedene Testarten wie Unit-Tests, Funktionstests, Negative Tests und Performance-Tests umfasst.
-    \item Traceability zwischen Anforderungen und Testfällen, um sicherzustellen, dass jede relevanten Anforderungen auch tatsächlich getestet wird.
-\end{itemize}
-
+Um diese Risiken zu minimieren, haben wir gezielt QS-Maßnahmen in unser Projekt integriert, auf die wir im nächsten Abschnitt eingehen.
 
 \subsection{Anwendung von QS-Methoden im Projekt}\label{subsec: anwendung-von-qs-methoden-im-projekt}
 
 Die Qualitätssicherung unseres Projekts erfolgte in mehreren Phasen, um eine hohe Softwarequalität und Stabilität sicherzustellen. 
 Dabei haben wir gezielt Maßnahmen ergriffen, die Fehler frühzeitig identifizieren und die Nachverfolgbarkeit der Anforderungen verbessern.
+
+Unsere wichtigsten Maßnahmen zur Sicherstellung der Softwarequalität sind:
+
+\begin{itemize}
+    \item Ein Anforderung-Review nach \textbf{ISO 20246}, um Unklarheiten frühzeitig zu identifizieren und widersprüchliche Anforderungen zu vermeiden \cite{Technical-Committee}.
+    \item Ein strukturiertes Testkonzept, das verschiedene Testarten wie Unit-Tests, Funktionstests, Negative Tests und Performance-Tests umfasst \cite{Röttgeretal2024}.
+    \item Traceability zwischen Anforderungen und Testfällen, um sicherzustellen, dass jede relevanten Anforderungen auch tatsächlich getestet wird.
+\end{itemize}
 
 Ein zentraler Bestandteil unserer Qualitätssicherung war die direkte Verknüpfung der Anforderungen mit den Testfällen.
 Dadurch konnten wir sicherstellen, dass jede implementierte Funktion einer definierten Anforderung entspricht und getestet wird.
@@ -47,9 +50,9 @@ Wie wir diese Qualitätsmaßnahmen konkret in unserem Projekt umgesetzt haben, w
 
 \begin{itemize}
     \item \textbf{Früheres Review der Anforderungen hilft, Fehler zu vermeiden:} Unklare oder fehlerhafte Anforderungen führen zu einem erhöhten Testaufwand und Nachbesserungen.
-    Durch unser strukturiertes Anforderung-Review konnten wir dies minimieren und von Anfang an präzisere Anforderungen definieren.
+    Durch unser strukturiertes Anforderung-Review konnten wir dies minimieren und von Anfang an präzisere Anforderungen definieren \cite{DaiglGlunz2024}.
     \item \textbf{automatisierte Tests sparen Zeit und erhöhen die Testabdeckung:} Manuelle Tests sind zeitaufwendig und fehleranfällig beispielsweise durch Konfigurationsfehler oder Eingabefehler.
-    Mit \texttt{pytext} konnten wir wiederholbare Tests automatisieren und schneller fehler identifizieren.
+    Mit \texttt{pytext} konnten wir wiederholbare Tests automatisieren und schneller fehler identifizieren \cite{Röttgeretal2024}.
     \item \textbf{Performance-Tests sind essenziell für die Skalierbarkeit:} Unsere Lasttests zeigten, dass das System stabil mit großen Datenmengen umgehen kann.
     Allerdings haben wir erkannt, dass für eine echte Skalierbarkeit eine relationale Datenbank vorteilhafter wäre als die aktuelle JSON-basierte Speicherung.
     \item \textbf{Fehlermeldungen sind genauso wichtig wie korrekte Funktionen:} Nicht nur fehlerfreie Funktionen, sondern auch verständliche Fehlermeldungen tragen zur Benutzerfreundlichkeit bei.

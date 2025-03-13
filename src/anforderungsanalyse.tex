@@ -9,12 +9,12 @@
 % Review-Methodik (z. B. Inspektionen, Walkthroughs, Checklisten)
 % Feststellung potenzieller Unklarheiten oder Mängel in den Anforderungen
 
-Im Rahmen dieses Projekts haben wir ein \texttt{technisches Review} nach ISO 20246 durchgeführt.
+Im Rahmen dieses Projekts haben wir ein \texttt{technisches Review} nach ISO 20246 [vgl. \cite{Technical-Committee}] durchgeführt.
 Diese Methode wurde gewählt, da sie eine frühe Fehlererkennung in der Anforderungsphase ermöglicht und sich besonders für dokumentenbasierte Analysen eignet.
 
 Das Review-Team bestand aus allen drei Projektmitgliedern, die Analyse erfolgte in zwei Schritten:
 \begin{enumerate}
-    \item \textbf{Individuelle Prüfung:} Jedes Teammitglied hat alleine für sich die Anforderungen unabhängig nach definierten Kriterien überprüft.
+    \item \textbf{Individuelle Prüfung:} Jedes Teammitglied hat alleine für sich die Anforderungen unabhängig überprüft.
     \item \textbf{Gemeinsame Konsolidierung}: In einer Sitzung wurden die identifizierten Probleme besprochen und Verbesserungsvorschläge erarbeitet.
 \end{enumerate}
 
@@ -34,6 +34,8 @@ Von den überprüften 11 Anforderungen:
     \item 3 wurden konkretisiert,
     \item 3 mussten inhaltlich angepasst werden \texttt{(z. B. neue Fehlermeldungen, Validierungsregeln)}.
 \end{itemize}
+
+Dazu sind noch einige ANforderungen hinzugekommen.
 
 Die vollständige Analyse mit konkreten Verbesserungsvorschlägen ist in folgender Tabelle dokumentiert:
 
@@ -75,9 +77,6 @@ Die vollständige Analyse mit konkreten Verbesserungsvorschlägen ist in folgend
 
 \subsection{Verbesserung der Anforderungen}\label{subsec:verbesserung-der-anforderungen}
 
-% Identifizierte Probleme und Verbesserungsvorschläge
-% Überarbeitung der Anforderungen nach den Review-Befunden
-% Nutzen klar definierter Anforderungen für spätere Testphasen
 
 Auf Basis unseres Reviews konnten wir die Anforderungen an das Hausverwaltungsprojekt verbessern.
 Dabei wurden unklare Definitionen konkretisiert, Testbarkeit verbessert und Validierungsregeln ergänzt.
@@ -94,8 +93,10 @@ Im Vergleich zu den ursprünglichen Anforderungen haben sich insbesondere die fo
 
 Nach Überlegung fanden wir es gut funktionalen von nicht funktionalen Anforderungen zu trennen.
 Die Trennung zwischen funktionalen und nicht-funktionalen Anforderungen ist essenziell, um eine klare Strukturierung der Systemanforderungen zu gewährleisten.\\
+
 Unsere funktionalen Anforderungen definieren, was das System tun soll, also welche konkreten Funktionen es bereitstellt.
 Sie sind direkt testbar und beschreiben die Interaktionen zwischen Nutzern und System.\\
+
 Nicht-funktionale Anforderungen hingegen spezifizieren wie das System diese Funktionen bereitstellen soll, also Qualitätsmerkmale wie Performance, Benutzerfreundlichkeit oder Skalierbarkeit.
 Durch diese Trennung wird es einfacher, sowohl die funktionale Umsetzung als auch die technischen Rahmenbedingungen des Prototyps gezielt zu überprüfen und zu optimieren.
 
