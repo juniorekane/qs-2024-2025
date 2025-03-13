@@ -47,7 +47,7 @@ Unsere Architektur ist speziell für einen Prototyp konzipiert, kann aber mit mi
 
 \subsection{Implementierung}\label{subsec:implementierung}
 
-Unser Prototyp haben wir modular aufgebaut und er besteht aus den folgenden Kernkomponenten:
+Unseren Prototyp haben wir modular aufgebaut und er besteht aus den folgenden Kernkomponenten:
 
 \footnotesize
 \begin{center}
@@ -141,7 +141,7 @@ Sind alle Bedingungen erfüllt, wird die Ablesung gespeichert und eine Erfolgsme
 
         return jsonify({"message": "Ablesung erfolgreich gespeichert", "ableser": ableser}), 201
     \end{minted}
-    \captionof{listing}{Python Code \textit{ablesung\_hinzufuegen}}
+    \captionof{listing}{Python Code \textit{ablesung\_hinzufuegen()}}
 }
 \normalsize
 \newpage
@@ -149,7 +149,7 @@ Sind alle Bedingungen erfüllt, wird die Ablesung gespeichert und eine Erfolgsme
 
 Diese Funktion berechnet den Verbrauch und generiert eine grafische Darstellung für den User.
 Die Funktionsweise haben wir so einfach wie möglich gehalten.
-Es werden zuerst die Verbrauchsdaten aus der JSON-Datei abgerufen und basierend auf der Gebäude-ID gefiltert dann wird ein Diagramm\\
+Es werden zuerst die Verbrauchsdaten aus der JSON-Datei abgerufen und basierend auf der Gebäude-ID gefiltert dann wird ein Diagramm
 mit Matplotlib zur Visualisierung des Verbrauchs erstellt.
 Anschließend wird das Diagramm gespeichert und auf der Weboberfläche angezeigt.
 
@@ -194,7 +194,7 @@ Anschließend wird das Diagramm gespeichert und auf der Weboberfläche angezeigt
 
         return render_template("verbrauch.html", gebaeude=gebaeude, selected_gebaeude=selected_gebaeude, verbrauchspfad=save_path)
     \end{minted}
-    \captionof{listing}{Python Code \textit{Verbrauchsanzeige}}
+    \captionof{listing}{Python Code \textit{Verbrauchsanzeige()}}
 }
 \normalsize
 
@@ -278,11 +278,14 @@ Insbesondere die korrekte Verarbeitung von Zähler-IDs und Verbrauchswerten konn
     IDes könnte nützlich sein, wenn der Prototyp in einer realen Umgebung für eine große Verwaltungsfirma eingesetzt werden soll.
 \end{itemize}
 
-Allerdings ist uns auch beim Testen einiges aufgefallen und zwar gibt es möglicherweise auch Verbesserungsbedarf, was mana an unserem Prototyp kritisieren könnte.
+Allerdings ist uns auch beim Testen einiges aufgefallen und zwar gibt es möglicherweise auch Verbesserungsbedarf, was man an unserem Prototyp kritisieren könnte.
 Da könnte man auf die folgende Punkte eingehen:
 \begin{itemize}
     \item Bei einem versuchten Massentest von 10000 gab es 7 fehlerhafte Einträge, da Zähler-IDs nicht doppelt existieren dürfen.
     Hierfür haben wir uns als Lösung ausgedacht, dass wir eine bessere ID-Prüfung vor dem Speichern einführen könnten.
+    Zudem konnten wir anfangs nicht ganz genau in unserem Code die Ursache erkennen,
+    weswegen es überhaupt diese doppelten Einträge gab und haben ein bisschen recherchiert. Am Ende haben wir angenommen,
+    dass es an der random-Funktion für die Generierung der IDs lag und dann entsprechend haben wir das angepasst.
     \item Die Verarbeitungsgeschwindigkeit war insgesamt gut, aber für noch größere Datenmengen könnte eine optimierte Datenbankstruktur erforderlich sein.
     Darüber hinaus könnte man mit dem Punkt Sicherheit unsere Datenpersistenz kritisieren, da die Daten ungeschützt gespeichert werden.
     Unsere Lösung hierfür wäre eine Umstellung auf eine sicherere Datenbank wie etwas MariaDB für eine produktive Umgebung.

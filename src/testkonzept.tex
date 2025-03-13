@@ -25,11 +25,21 @@ Unser Testkonzept folgt einer auf \texttt{bottom-up-ansatz} basierten Strategie,
 	\item \textbf{Schließlich Performance-Tests}: Simulation von hoher Last, um die Skalierbarkeit zu überprüfen.
 \end{itemize}
 
-Wir haben uns für ein \textbf{Boundary-value-Testing} als zentraler Bestandteil unserer Teststrategie entschieden,
-da viele Funktionen des Systems von numerischen Eingaben abhängig sind. Besonders bei der Erfassung von Verbrauchsdaten
-und Ablesewerten ist es entscheidend, Grenzwerte zu identifizieren und zu validieren.
-Daher haben wir gezielt minimale und maximale Wertebereiche getestet, um sicherzustellen,
-dass unser System robuste Validierungen durchführt und fehlerhafte Eingaben korrekt verarbeitet.
+Wir wissen aus der Vorlesung, dass sich Softwaretests grundsätzlich in drei Kategorien unterteilen lassen:
+
+\begin{itemize}
+	\item \textbf{White-Box-Testing:} Interne Logik der Software wird geprüft, Code-Abdeckung ist entscheidend.
+	\item \textbf{Black-Box-Testing:} Tests erfolgen ohne Kenntnis des Quellcodes, Fokus liegt auf den Ein- und Ausgaben des Systems.
+	\item \textbf{Gray-Box-Testing:} Kombination aus White-Box und Black-Box, teilweise Kenntnisse über den Code werden verwendet.
+\end{itemize}
+
+Wir haben uns eine Kombination aus \textbf{Black-Box-Testing} und \textbf{Gray-Box-Testing} entschieden, um die Funktionalität aus Nutzersicht zu prüfen und gezielt Fehlerfälle im Code zu analysieren.
+
+Unsere Entscheidung, uns auf diese Techniken zu konzentrieren, basiert auf der Tatsache, dass unser
+Prototyp eine Webanwendung ist, wobei der Fokus auf der Funktionalität der Schnittstellen und Datenverarbeitung liegt.
+Darauf basierend, dass viele Funktionen des Systems von numerischen Eingaben abhängig sind,
+haben wir ein \textbf{Boundary-value-Testing} als zentraler Bestandteil unserer Teststrategie ausgewählt.
+Besonders bei der Erfassung von Verbrauchsdaten und Ablesewerten ist es entscheidend, Grenzwerte zu identifizieren und zu validieren.
 
 \subsection{Testarten}\label{subsec:testarten}
 
@@ -75,8 +85,7 @@ Zum Testen gehören auch Testdaten zur Simulation, weil wir noch bei einem Proto
 
 \subsection{Ableitung konkreter Testfällen}\label{subsec:ableitung-konkreter-testfallen}
 
-Die gründliche Kontrolle der Funktionen ist entscheidend für die Qualität eines Softwareprojekts.
-Sie bestimmt, ob das Projekt erfolgreich ist oder nicht.
+Die gründliche Kontrolle der Funktionen ist entscheidend für die Qualität eines Softwareprojekts. Sie bestimmt, ob das Projekt erfolgreich ist oder nicht.
 Daher haben wir aus unseren Anforderungen gezielt abgeleitet, um sicherzustellen, dass der Prototyp alle Anforderungen erfüllt und fehlerfrei arbeitet.
 Wir haben wie oben schon aufgelistet, vier Testarten gewählt
 
@@ -86,12 +95,12 @@ Wir haben wie oben schon aufgelistet, vier Testarten gewählt
 	\begin{longtblr}[caption={Testfälle für die Hausverwaltungssoftware}, label={tab:testcases}]{width=0.9\textwidth, colspec={X[2,l,m] X[3,c,m] X[3,l,m] X[3,l,m] X[3,l,m]}}
 		\toprule
         \textbf{Test-ID} & \textbf{Beschreibung} & \textbf{Eingabe} & \textbf{Erwartetes Ergebnis} & \textbf{Testtyp} \\ \midrule
-        TC-F6-01 & Zähler-ID existiert nicht & `999-9999-9999` & Fehlermeldung: „Die eingegebene ID existiert nicht.“ & Negative Test \\ \cmidrule{1-5}
+        TC-F6-01 & Zähler-ID existiert nicht & `9999-99999-999999` & Fehlermeldung: „Die eingegebene ID existiert nicht.“ & Negative Test \\ \cmidrule{1-5}
         TC-F5-02 & Negativer Ablesewert & `-10` & Fehlermeldung: „Ungültiger Ablesewert“ & Negative Test \\ \cmidrule{1-5}
         TC-F3-03 & Zählerlänge & `1-2024-4567823` & Fehlermeldung: „Zähler-ID muss genau 14 Zeichen haben!“ & Negative Test \\ \cmidrule{1-5}
         TC-F5-04 & Ablesedatum rückdatiert & `2000-01-01` & Fehlermeldung: „Datum darf nicht in der Vergangenheit liegen!“ & Negative Test \\ \cmidrule{1-5}
         TC-F5-05 & Ablesewert kleiner als vorheriger Wert & Neuer Wert: `50`, alter Wert: `100` & Fehlermeldung: „Neuer Wert muss größer sein als der vorherige.“ & Negative Test \\ \cmidrule{1-5}
-        TC-F3-06 & Gültige Zähler-ID über die Suchfunktion eingeben & `1-2025-5487` & Zählerdetails werden angezeigt & Funktionstest \\ \cmidrule{1-5}
+        TC-F3-06 & Gültige Zähler-ID über die Suchfunktion eingeben & `1-2025-54871257` & Zählerdetails werden angezeigt & Funktionstest \\ \cmidrule{1-5}
         TC-F5-07 & Korrekte Ablesung speichern & Alter Wert: 100, Neuer Wert: `250` & Wert wird korrekt gespeichert & Funktionstest \\ \cmidrule{1-5}
         TC-F5-08 & Ablesedatum in der Zukunft & Datum: `01.01.2030` & Wert wird gespeichert & Funktionstest \\ \cmidrule{1-5}
         TC-F8-09 & Standard-Ableser bei fehlender Eingabe & Ableser nicht eingetragen & Standardwert „Unbekannt“ wird gespeichert & Funktionstest \\ \cmidrule{1-5}
